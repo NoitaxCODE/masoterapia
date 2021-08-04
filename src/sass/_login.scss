@@ -1,0 +1,17 @@
+.form-login{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-width: var(--small);
+  &__input{
+    min-width: var(--small);
+  }
+  &__btn{
+    align-self: flex-end;
+    background-color: #97C21A;
+    color: white;
+    width: 12rem;
+    margin-top: 3rem;
+  }
+}
