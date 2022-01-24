@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/general.css">
+    <link rel="stylesheet" href="./styles/general.css">
     <title>Document</title>
   </head>
   <body> 
@@ -26,7 +26,7 @@
               <input type="text" name="">
             </label>
             <label class="w-100 mt-3">Sexo:
-              <select> 
+              <select class="js-sex"> 
                 <option value="-">-</option>
                 <option value="Masculino">Masculino</option>
                 <option value="Femenino">Femenino</option>
@@ -76,7 +76,7 @@
             <label class="mt-3">Hijos:
               <input type="number" name="">
             </label>
-            <div class="mt-3">Se encuentra embarazada?
+            <div class="mt-3" data-sex>Se encuentra embarazada?
               <div class="bg__2__radio-container">
                 <div class="bg__2__radio-items">
                   <label for="embarazada-si">SI</label>
@@ -88,7 +88,7 @@
                 </div>
               </div>
             </div>
-            <label class="mt-3">Ultima menstruazion:
+            <label class="mt-3" data-sex>Ultima menstruazion:
               <input type="date" name="">
             </label>
             <div class="mt-3">Intervenciones quirurgicas
@@ -113,7 +113,7 @@
             <h3>Enfermedades <br> previas/existentes</h3><img src=".././img/ico/edit.svg">
           </div>
           <div class="bg__2">
-            <div class="bg__2__radio">
+            <div class="bg__2__radio bg__2__row-1">
               <label>Diabetes:</label>
               <div class="bg__2__radio__row">
                 <div class="bg__2__radio-items">
@@ -126,7 +126,7 @@
                 </div>
               </div>
             </div>
-            <div class="bg__2__radio mt-4">
+            <div class="bg__2__radio mt-4 bg__2__row-2">
               <label>Marcapasos:</label>
               <div class="bg__2__radio__row">
                 <div class="bg__2__radio-items">
@@ -139,7 +139,7 @@
                 </div>
               </div>
             </div>
-            <div class="bg__2__radio mt-4">
+            <div class="bg__2__radio mt-4 bg__2__row-3">
               <label>Alergias:</label>
               <div class="bg__2__radio__row">
                 <div class="bg__2__radio-items">
@@ -152,7 +152,7 @@
                 </div>
               </div>
             </div>
-            <div class="bg__2__radio mt-4">
+            <div class="bg__2__radio mt-4 bg__2__row-4">
               <label>Asma:</label>
               <div class="bg__2__radio__row">
                 <div class="bg__2__radio-items">
@@ -165,7 +165,7 @@
                 </div>
               </div>
             </div>
-            <div class="bg__2__radio mt-4">
+            <div class="bg__2__radio mt-4 bg__2__row-5">
               <label>Sida:</label>
               <div class="bg__2__radio__row">
                 <div class="bg__2__radio-items">
@@ -178,7 +178,7 @@
                 </div>
               </div>
             </div>
-            <div class="bg__2__radio mt-4">
+            <div class="bg__2__radio mt-4 bg__2__row-6">
               <label>Epilepsia:</label>
               <div class="bg__2__radio__row">
                 <div class="bg__2__radio-items">
@@ -191,7 +191,7 @@
                 </div>
               </div>
             </div>
-            <div class="bg__2__radio mt-4">
+            <div class="bg__2__radio mt-4 bg__2__row-7">
               <label>Protesis dental:</label>
               <div class="bg__2__radio__row">
                 <div class="bg__2__radio-items">
@@ -204,7 +204,7 @@
                 </div>
               </div>
             </div>
-            <div class="bg__2__radio mt-4">
+            <div class="bg__2__radio mt-4 bg__2__row-8">
               <label>Lentes de contacto:</label>
               <div class="bg__2__radio__row">
                 <div class="bg__2__radio-items">
@@ -217,7 +217,7 @@
                 </div>
               </div>
             </div>
-            <div class="bg__2__radio mt-4">
+            <div class="bg__2__radio mt-4 bg__2__row-9">
               <label>Hipotenso:</label>
               <div class="bg__2__radio__row">
                 <div class="bg__2__radio-items">
@@ -230,7 +230,7 @@
                 </div>
               </div>
             </div>
-            <div class="bg__2__radio mt-4">
+            <div class="bg__2__radio mt-4 bg__2__row-10">
               <label>Hipertenso:</label>
               <div class="bg__2__radio__row">
                 <div class="bg__2__radio-items">
@@ -243,7 +243,7 @@
                 </div>
               </div>
             </div>
-            <div class="bg__2__radio mt-4">
+            <div class="bg__2__radio mt-4 bg__2__row-11">
               <label>Hepatitis:</label>
               <div class="bg__2__radio__row">
                 <div class="bg__2__radio-items">
@@ -256,7 +256,7 @@
                 </div>
               </div>
             </div>
-            <div class="bg__2__radio">
+            <div class="bg__2__radio bg__2__row-12">
               <label for="hepatitis-tipo">Tipo:</label>
               <div class="bg__2__radio__row">
                 <div class="bg__2__radio-items">
@@ -268,7 +268,7 @@
                 </div>
               </div>
             </div>
-            <div class="bg__2__radio mt-4">
+            <div class="bg__2__radio mt-4 bg__2__row-13">
               <label>Fracturas:</label>
               <div class="bg__2__radio__row">
                 <div class="bg__2__radio-items">
@@ -281,16 +281,16 @@
                 </div>
               </div>
             </div>
-            <label class="mt-3">Zona:
+            <label class="mt-3 bg__2__row-14">Zona:
               <textarea name="" cols="30" rows="2"></textarea>
             </label>
-            <label class="mt-3">Antiguedad:
+            <label class="mt-3 bg__2__row-15">Antiguedad:
               <textarea name="" cols="30" rows="2"></textarea>
             </label>
-            <label class="mt-3">Observaciones (clavos,protesis,etc.):
+            <label class="mt-3 bg__2__row-16">Observaciones (clavos,protesis,etc.):
               <textarea name="" cols="30" rows="2"></textarea>
             </label>
-            <div class="bg__2__radio mt-4">
+            <div class="bg__2__radio mt-4 bg__2__row-17">
               <label>Realiza act. fisica?</label>
               <div class="bg__2__radio__row">
                 <div class="bg__2__radio-items">
@@ -303,10 +303,10 @@
                 </div>
               </div>
             </div>
-            <label class="mt-3">Detallar:
+            <label class="mt-3 bg__2__row-18">Detallar:
               <textarea name="" cols="30" rows="2"></textarea>
             </label>
-            <div class="bg__2__radio mt-4">
+            <div class="bg__2__radio mt-4 bg__2__row-19">
               <label>Esta bajo <br>atencion medica?</label>
               <div class="bg__2__radio__row">
                 <div class="bg__2__radio-items">
@@ -319,7 +319,7 @@
                 </div>
               </div>
             </div>
-            <div class="bg__2__radio mt-4">
+            <div class="bg__2__radio mt-4 bg__2__row-20">
               <label>Toma <br> medicamentos?</label>
               <div class="bg__2__radio__row">
                 <div class="bg__2__radio-items">
@@ -332,7 +332,7 @@
                 </div>
               </div>
             </div>
-            <label class="mt-3">Cuales?
+            <label class="mt-3 bg__2__row-21">Cuales?
               <textarea name="" cols="30" rows="2"></textarea>
             </label>
           </div>
@@ -352,6 +352,6 @@
         </div>
       </div>
     </main>
-    <script src="../js/general.js"></script>
+    <script src="../js/general.js" type="module"></script>
   </body>
 </html>

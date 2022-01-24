@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/general.css">
+    <link rel="stylesheet" href="./styles/general.css">
     <title>Document</title>
   </head>
   <body> 
     <main>
       <h1 id="title-main">Masoterapia & Resilencia</h1>
       <div class="container d-flex justify-content-center">
-        <form class="form-login mt-5">
+        <form class="form-login">
           <div class="mb-3 mt-5">
             <label class="form-label" for="exampleInputEmail1">Email</label>
             <input class="form-control form-login__input" id="exampleInputEmail1" type="email" aria-describedby="emailHelp">
@@ -20,12 +20,12 @@
             <label class="form-label" for="exampleInputPassword1">Password</label>
             <input class="form-control form-login__input" id="exampleInputPassword1" type="password">
           </div>
-          <div class="mb-3 d-flex justify-content-center w-100">
-            <button class="btn form-login__btn" type="submit">Iniciar sesion</button>
+          <div class="mb-3 d-flex form-login-container">
+            <button class="btn form-login-container__btn" type="submit">Iniciar sesion</button><a class="btn btn-primary form-login-container__btn" href="/signup">Crear cuenta</a>
           </div>
         </form>
       </div>
     </main>
-    <script src="../js/general.js"></script>
+    <script src="../js/general.js" type="module"></script>
   </body>
 </html>

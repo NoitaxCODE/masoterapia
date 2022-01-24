@@ -1,12 +1,15 @@
 extends ./index.pug
 append main
   .container.d-flex.justify-content-center
-    form.form-login.mt-5
+    form.form-login(action="/" method="POST" autocomplete="on")
       .mb-3.mt-5
+        if signinMessage.length > 0
+          p.alert.alert-danger #{signinMessage}
         label.form-label(for='exampleInputEmail1') Email
-        input#exampleInputEmail1.form-control.form-login__input(type='email' aria-describedby='emailHelp')
+        input#exampleInputEmail1.form-control.form-login__input(name="email" type='email' aria-describedby='emailHelp')
       .mb-3
         label.form-label(for='exampleInputPassword1') Password
-        input#exampleInputPassword1.form-control.form-login__input(type='password')
-      .mb-3.d-flex.justify-content-center.w-100
-        button.btn.form-login__btn(type='submit') Iniciar sesion
+        input#exampleInputPassword1.form-control.form-login__input(name="password" type='password' autocomplete="on")
+      .mb-3.d-flex.form-login-container
+        button.btn.form-login-container__btn(type='submit') Iniciar sesion
+        a.btn.btn-primary.form-login-container__btn(href="/signup") Crear cuenta

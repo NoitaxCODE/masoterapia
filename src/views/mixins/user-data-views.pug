@@ -1,0 +1,238 @@
+mixin userData
+  form.fila(action="/personal-form-data" method="POST")
+    .subtitle.mt-4.mb-2
+      h3 Datos Personales
+      input.save(type="image", src=".././img/ico/save.svg")
+    .bg__2
+      label Nombre y apellido:
+        input(type="text", name="nombre")
+      label.w-100.mt-3 Sexo:
+        select.js-sex(name="sexo") 
+          option(value="-") -
+          option(value="Masculino") Masculino
+          option(value="Femenino") Femenino
+      label.mt-3 Fecha de nacimiento:
+        input(type="date", name="fechaDeNacimiento")
+      label.mt-3.w-100 Estado civil:
+        input(type="text", name="estadoCivil")
+      label.mt-3.w-100 Ocupacion:
+        input(type="text", name="ocupacion")
+
+mixin userContact
+  form.fila(action="/contact-form-data" method="POST")
+    .subtitle.mt-4.mb-2
+      h3 Datos de Contacto
+      input.save(type="image", src=".././img/ico/save.svg")
+    .bg__2
+      label Domicilio:
+        input(type="text", name="domicilio")
+      label.mt-3 Localidad:
+        input(type="text", name="localidad")
+      label.mt-3 Codigo Postal:
+        input(type="text", name="cp")
+      label.mt-3 Telefono:
+        input(type="tel", name="telefono")
+      label.mt-3 E-mail:
+        input(type="email", name="email")
+
+mixin userMedicos
+  form.fila(action="/medicos-form-data" method="POST")
+    .subtitle.mt-4.mb-2
+      h3 Datos Medicos
+      input.save(type="image", src=".././img/ico/save.svg")
+    .bg__2
+      label Grupo sanguineo:
+        input(type="text", name="sangre")
+      label.mt-3 Hijos:
+        input(type="number", name="hijos")
+      .mt-3(data-sex) Se encuentra embarazada?
+        .bg__2__radio-container
+          .bg__2__radio-items
+            label(for="embarazada-si") SI
+            input#embarazada-si(type="radio", name="embarazada" value="SI")
+          .bg__2__radio-items
+            label(for="embarazada-no") NO
+            input#embarazada-no(type="radio", name="embarazada" value="NO")
+      label.mt-3(data-sex) Ultima menstruazion:
+        input(type="date", name="menstruacion")
+      .mt-3 Intervenciones quirurgicas
+        .bg__2__radio-container
+          .bg__2__radio-items
+            label(for="intervencion-si") SI
+            input#intervencion-si(type="radio", name="cirugias" value="SI")
+          .bg__2__radio-items
+            label(for="intervencsion-no") NO
+            input#intervencion-no(type="radio", name="cirugias" value="NO")
+      label.mt-3 Detalles de la int. Quir.:
+        textarea(name="detalles", cols="30", rows="8") 
+
+mixin userEnfermedades
+  form.fila(action="/enfermedades-form-data" method="POST")
+    .subtitle.mt-4.mb-2
+      h3 Enfermedades <br> previas/existentes
+      input.save(type="image", src=".././img/ico/save.svg")
+    .bg__2
+      .bg__2__radio.bg__2__row-1
+        label Diabetes:
+        .bg__2__radio__row
+          .bg__2__radio-items
+            label(for="intervencion-si") SI
+            input#diabetes-si(type="radio", name="diabetes" value="SI")
+          .bg__2__radio-items
+            label(for="intervencion-no") NO
+            input#diabetes-no(type="radio", name="diabetes" value="NO")
+      .bg__2__radio.mt-4.bg__2__row-2
+        label Marcapasos:
+        .bg__2__radio__row
+          .bg__2__radio-items
+            label(for="marcapasos-si") SI
+            input#intervencion-si(type="radio", name="marcapasos" value="SI")
+          .bg__2__radio-items
+            label(for="marcapasos-no") NO
+            input#intervencion-no(type="radio", name="marcapasos" value="NO")
+      .bg__2__radio.mt-4.bg__2__row-3
+        label Alergias:
+        .bg__2__radio__row
+          .bg__2__radio-items
+            label(for="alergias-si") SI
+            input#intervencion-si(type="radio", name="alergias" value="SI")
+          .bg__2__radio-items
+            label(for="alergias-no") NO
+            input#intervencion-no(type="radio", name="alergias" value="NO")
+      .bg__2__radio.mt-4.bg__2__row-4
+        label Asma:
+        .bg__2__radio__row
+          .bg__2__radio-items
+            label(for="asma-si") SI
+            input#intervencion-si(type="radio", name="asma" value="SI")
+          .bg__2__radio-items
+            label(for="asma-no") NO
+            input#intervencion-no(type="radio", name="asma" value="NO")
+      .bg__2__radio.mt-4.bg__2__row-5
+        label Sida:
+        .bg__2__radio__row
+          .bg__2__radio-items
+            label(for="sida-si") SI
+            input#intervencion-si(type="radio", name="sida" value="SI")
+          .bg__2__radio-items
+            label(for="sida-no") NO
+            input#intervencion-no(type="radio", name="sida" value="NO")
+      .bg__2__radio.mt-4.bg__2__row-6
+        label Epilepsia:
+        .bg__2__radio__row
+          .bg__2__radio-items
+            label(for="epilepsia-si") SI
+            input#intervencion-si(type="radio", name="epilepsia" value="SI")
+          .bg__2__radio-items
+            label(for="epilepsia-no") NO
+            input#intervencion-no(type="radio", name="epilepsia" value="NO")
+      .bg__2__radio.mt-4.bg__2__row-7
+        label Protesis dental:
+        .bg__2__radio__row
+          .bg__2__radio-items
+            label(for="dental-si") SI
+            input#intervencion-si(type="radio", name="dental" value="SI")
+          .bg__2__radio-items
+            label(for="dental-no") NO
+            input#intervencion-no(type="radio", name="dental" value="NO")
+      .bg__2__radio.mt-4.bg__2__row-8
+        label Lentes de contacto:
+        .bg__2__radio__row
+          .bg__2__radio-items
+            label(for="lentes-si") SI
+            input#intervencion-si(type="radio", name="lentes" value="SI")
+          .bg__2__radio-items
+            label(for="lentes-no") NO
+            input#intervencion-no(type="radio", name="lentes" value="NO")
+      .bg__2__radio.mt-4.bg__2__row-9
+        label Hipotenso:
+        .bg__2__radio__row
+          .bg__2__radio-items
+            label(for="hipotenso-si") SI
+            input#intervencion-si(type="radio", name="hipotenso" value="SI")
+          .bg__2__radio-items
+            label(for="hipotenso-no") NO
+            input#intervencion-no(type="radio", name="hipotenso" value="NO")
+      .bg__2__radio.mt-4.bg__2__row-10
+        label Hipertenso:
+        .bg__2__radio__row
+          .bg__2__radio-items
+            label(for="hipertenso-si") SI
+            input#intervencion-si(type="radio", name="hipertenso" value="SI")
+          .bg__2__radio-items
+            label(for="hipertenso-no") NO
+            input#intervencion-no(type="radio", name="hipertenso" value="NO")
+      .bg__2__radio.mt-4.bg__2__row-11
+        label Hepatitis:
+        .bg__2__radio__row
+          .bg__2__radio-items
+            label(for="hepatitis-si") SI
+            input#intervencion-si(type="radio", name="hepatitis" value="SI")
+          .bg__2__radio-items
+            label(for="hepatitis-no") NO
+            input#intervencion-no(type="radio", name="hepatitis" value="NO")
+      .bg__2__radio.bg__2__row-12
+        label(for="hepatitis-tipo") Tipo:
+        .bg__2__radio__row
+          .bg__2__radio-items
+            select#hepatitis-tipo(name="hepatitisTipo")
+              option(value="A") A 
+              option(value="B") B 
+              option(value="C") C 
+      .bg__2__radio.mt-4.bg__2__row-13
+        label Fracturas:
+        .bg__2__radio__row
+          .bg__2__radio-items
+            label(for="fracturas-si") SI
+            input#intervencion-si(type="radio", name="fracturas" value="SI")
+          .bg__2__radio-items
+            label(for="fracturas-no") NO
+            input#intervencion-no(type="radio", name="fracturas" value="NO")
+      label.mt-3.bg__2__row-14 Zona:
+        textarea(name="zona", cols="30", rows="2")
+      label.mt-3.bg__2__row-15 Antiguedad:
+        textarea(name="antiguedad", cols="30", rows="2")
+      label.mt-3.bg__2__row-16 Observaciones (clavos,protesis,etc.):
+        textarea(name="observaciones", cols="30", rows="2")
+      .bg__2__radio.mt-4.bg__2__row-17
+        label Realiza act. fisica?
+        .bg__2__radio__row
+          .bg__2__radio-items
+            label(for="actividad-si") SI
+            input#intervencion-si(type="radio", name="actividad" value="SI")
+          .bg__2__radio-items
+            label(for="actividad-no") NO
+            input#intervencion-no(type="radio", name="actividad" value="NO")
+      label.mt-3.bg__2__row-18 Detallar:
+        textarea(name="detalle", cols="30", rows="2")
+      .bg__2__radio.mt-4.bg__2__row-19
+        label Esta bajo <br>atencion medica?
+        .bg__2__radio__row
+          .bg__2__radio-items
+            label(for="atencion-si") SI
+            input#intervencion-si(type="radio", name="atencion" value="SI")
+          .bg__2__radio-items
+            label(for="atencion-no") NO
+            input#intervencion-no(type="radio", name="atencion" value="NO")
+      .bg__2__radio.mt-4.bg__2__row-20
+        label Toma <br> medicamentos?
+        .bg__2__radio__row
+          .bg__2__radio-items
+            label(for="medicamentos-si") SI
+            input#intervencion-si(type="radio", name="medicamentos" value="SI")
+          .bg__2__radio-items
+            label(for="medicamentos-no") NO
+            input#intervencion-no(type="radio", name="medicamentos" value="NO")
+      label.mt-3.bg__2__row-21 Cuales?
+        textarea(name="cuales", cols="30", rows="2")
+
+mixin userSocial
+  form.fila(action="/social-form-data" method="POST")
+    .subtitle.mt-4.mb-2
+      h3 Obra social
+      input.save(type="image", src=".././img/ico/save.svg")
+    .bg__2
+      label Nombre:
+        input(type="text", name="nombre")
+      label.mt-3 Numero de afiliado:
+        input(type="text", name="numero")

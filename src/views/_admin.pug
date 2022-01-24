@@ -1,0 +1,17 @@
+extends ./index.pug
+append main
+  .bg-admin
+    header.d-flex.header_admin
+      h2 Pacientes
+      .btn_update
+        p.refresh-text Cargar
+        img.refresh(src=".././img/ico/refresh.svg")
+    #container-pacientes
+    form.container-codigo
+      h2 Cambiar codigo de seguridad 
+      p#codigoActual
+      input#codigo(type="password",name="code", placeholder="Nuevo codigo")
+      button(class="btn btn-success btn-code") Actualizar
+
+
+

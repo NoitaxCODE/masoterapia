@@ -1,239 +1,32 @@
-extends ./index.pug
+extends ./index
+include ./mixins/user-data-views
+include ./mixins/user-data-edited
+
 append main
   .bg
     .fila
-      h2 Ficha del paciente de masoterapia
+      .header
+        h2 Ficha del paciente de masoterapia
+        a.btn.btn-outline-danger(href="/logout") Salir
       label.fecha-actual.mt-4 Fecha:
         input(type="date", name="")
-    .fila
-      .subtitle.mt-4.mb-2
-        h3 Datos Personales
-        img(src=".././img/ico/edit.svg")
-      .bg__2
-        label Nombre y apellido:
-          input(type="text", name="")
-        label.w-100.mt-3 Sexo:
-          select 
-            option(value="-") -
-            option(value="Masculino") Masculino
-            option(value="Femenino") Femenino
-        label.mt-3 Fecha de nacimiento:
-          input(type="date", name="")
-        label.mt-3.w-100 Estado civil:
-          input(type="text", name="")
-        label.mt-3.w-100 Ocupacion:
-          input(type="text", name="")
-    .fila
-      .subtitle.mt-4.mb-2
-        h3 Datos de Contacto
-        img(src=".././img/ico/edit.svg")
-      .bg__2
-        label Domicilio:
-          input(type="text", name="")
-        label.mt-3 Localidad:
-          input(type="text", name="")
-        label.mt-3 Codigo Postal:
-          input(type="text", name="")
-        label.mt-3 Telefono:
-          input(type="tel", name="")
-        label.mt-3 E-mail:
-          input(type="email", name="")
-    .fila
-      .subtitle.mt-4.mb-2
-        h3 Datos Medicos
-        img(src=".././img/ico/edit.svg")
-      .bg__2
-        label Grupo sanguineo:
-          input(type="text", name="")
-        label.mt-3 Hijos:
-          input(type="number", name="")
-        .mt-3 Se encuentra embarazada?
-          .bg__2__radio-container
-            .bg__2__radio-items
-              label(for="embarazada-si") SI
-              input#embarazada-si(type="radio", name="embarazada" value="SI")
-            .bg__2__radio-items
-              label(for="embarazada-no") NO
-              input#embarazada-no(type="radio", name="embarazada" value="NO")
-        label.mt-3 Ultima menstruazion:
-          input(type="date", name="")
-        .mt-3 Intervenciones quirurgicas
-          .bg__2__radio-container
-            .bg__2__radio-items
-              label(for="intervencion-si") SI
-              input#intervencion-si(type="radio", name="intervencion" value="SI")
-            .bg__2__radio-items
-              label(for="intervencion-no") NO
-              input#intervencion-no(type="radio", name="intervencion" value="NO")
-        label.mt-3 Detalles de la int. Quir.:
-          textarea(name="", cols="30", rows="8") 
-    .fila
-      .subtitle.mt-4.mb-2
-        h3 Enfermedades <br> previas/existentes
-        img(src=".././img/ico/edit.svg")
-      .bg__2
-        .bg__2__radio
-          label Diabetes:
-          .bg__2__radio__row
-            .bg__2__radio-items
-              label(for="intervencion-si") SI
-              input#diabetes-si(type="radio", name="diabetes" value="SI")
-            .bg__2__radio-items
-              label(for="intervencion-no") NO
-              input#diabetes-no(type="radio", name="diabetes" value="NO")
-
-        .bg__2__radio.mt-4
-          label Marcapasos:
-          .bg__2__radio__row
-            .bg__2__radio-items
-              label(for="marcapasos-si") SI
-              input#intervencion-si(type="radio", name="marcapasos" value="SI")
-            .bg__2__radio-items
-              label(for="marcapasos-no") NO
-              input#intervencion-no(type="radio", name="marcapasos" value="NO")
-        
-        .bg__2__radio.mt-4
-          label Alergias:
-          .bg__2__radio__row
-            .bg__2__radio-items
-              label(for="alergias-si") SI
-              input#intervencion-si(type="radio", name="alergias" value="SI")
-            .bg__2__radio-items
-              label(for="alergias-no") NO
-              input#intervencion-no(type="radio", name="alergias" value="NO")
-
-        .bg__2__radio.mt-4
-          label Asma:
-          .bg__2__radio__row
-            .bg__2__radio-items
-              label(for="asma-si") SI
-              input#intervencion-si(type="radio", name="asma" value="SI")
-            .bg__2__radio-items
-              label(for="asma-no") NO
-              input#intervencion-no(type="radio", name="asma" value="NO")
-        .bg__2__radio.mt-4
-          label Sida:
-          .bg__2__radio__row
-            .bg__2__radio-items
-              label(for="sida-si") SI
-              input#intervencion-si(type="radio", name="sida" value="SI")
-            .bg__2__radio-items
-              label(for="sida-no") NO
-              input#intervencion-no(type="radio", name="sida" value="NO")
-        .bg__2__radio.mt-4
-          label Epilepsia:
-          .bg__2__radio__row
-            .bg__2__radio-items
-              label(for="epilepsia-si") SI
-              input#intervencion-si(type="radio", name="epilepsia" value="SI")
-            .bg__2__radio-items
-              label(for="epilepsia-no") NO
-              input#intervencion-no(type="radio", name="epilepsia" value="NO")
-        .bg__2__radio.mt-4
-          label Protesis dental:
-          .bg__2__radio__row
-            .bg__2__radio-items
-              label(for="dental-si") SI
-              input#intervencion-si(type="radio", name="dental" value="SI")
-            .bg__2__radio-items
-              label(for="dental-no") NO
-              input#intervencion-no(type="radio", name="dental" value="NO")
-        .bg__2__radio.mt-4
-          label Lentes de contacto:
-          .bg__2__radio__row
-            .bg__2__radio-items
-              label(for="lentes-si") SI
-              input#intervencion-si(type="radio", name="lentes" value="SI")
-            .bg__2__radio-items
-              label(for="lentes-no") NO
-              input#intervencion-no(type="radio", name="lentes" value="NO")
-        .bg__2__radio.mt-4
-          label Hipotenso:
-          .bg__2__radio__row
-            .bg__2__radio-items
-              label(for="hipotenso-si") SI
-              input#intervencion-si(type="radio", name="hipotenso" value="SI")
-            .bg__2__radio-items
-              label(for="hipotenso-no") NO
-              input#intervencion-no(type="radio", name="hipotenso" value="NO")
-        .bg__2__radio.mt-4
-          label Hipertenso:
-          .bg__2__radio__row
-            .bg__2__radio-items
-              label(for="hipertenso-si") SI
-              input#intervencion-si(type="radio", name="hipertenso" value="SI")
-            .bg__2__radio-items
-              label(for="hipertenso-no") NO
-              input#intervencion-no(type="radio", name="hipertenso" value="NO")
-        .bg__2__radio.mt-4
-          label Hepatitis:
-          .bg__2__radio__row
-            .bg__2__radio-items
-              label(for="hepatitis-si") SI
-              input#intervencion-si(type="radio", name="hepatitis" value="SI")
-            .bg__2__radio-items
-              label(for="hepatitis-no") NO
-              input#intervencion-no(type="radio", name="hepatitis" value="NO")
-        .bg__2__radio
-          label(for="hepatitis-tipo") Tipo:
-          .bg__2__radio__row
-            .bg__2__radio-items
-              select#hepatitis-tipo(name="")
-                option(value="A") A 
-                option(value="B") B 
-                option(value="C") C 
-        .bg__2__radio.mt-4
-          label Fracturas:
-          .bg__2__radio__row
-            .bg__2__radio-items
-              label(for="fracturas-si") SI
-              input#intervencion-si(type="radio", name="fracturas" value="SI")
-            .bg__2__radio-items
-              label(for="fracturas-no") NO
-              input#intervencion-no(type="radio", name="fracturas" value="NO")
-        label.mt-3 Zona:
-          textarea(name="", cols="30", rows="2")
-        label.mt-3 Antiguedad:
-          textarea(name="", cols="30", rows="2")
-        label.mt-3 Observaciones (clavos,protesis,etc.):
-          textarea(name="", cols="30", rows="2")
-        .bg__2__radio.mt-4
-          label Realiza act. fisica?
-          .bg__2__radio__row
-            .bg__2__radio-items
-              label(for="actividad-si") SI
-              input#intervencion-si(type="radio", name="actividad" value="SI")
-            .bg__2__radio-items
-              label(for="actividad-no") NO
-              input#intervencion-no(type="radio", name="actividad" value="NO")
-        label.mt-3 Detallar:
-          textarea(name="", cols="30", rows="2")
-        .bg__2__radio.mt-4
-          label Esta bajo <br>atencion medica?
-          .bg__2__radio__row
-            .bg__2__radio-items
-              label(for="atencion-si") SI
-              input#intervencion-si(type="radio", name="atencion" value="SI")
-            .bg__2__radio-items
-              label(for="atencion-no") NO
-              input#intervencion-no(type="radio", name="atencion" value="NO")
-        .bg__2__radio.mt-4
-          label Toma <br> medicamentos?
-          .bg__2__radio__row
-            .bg__2__radio-items
-              label(for="medicamentos-si") SI
-              input#intervencion-si(type="radio", name="medicamentos" value="SI")
-            .bg__2__radio-items
-              label(for="medicamentos-no") NO
-              input#intervencion-no(type="radio", name="medicamentos" value="NO")
-        label.mt-3 Cuales?
-          textarea(name="", cols="30", rows="2")
-    .fila
-      .subtitle.mt-4.mb-2
-        h3 Obra social
-        img(src=".././img/ico/edit.svg")
-      .bg__2
-        label Nombre:
-          input(type="text", name="")
-        label.mt-3 Numero de afiliado:
-          input(type="text", name="")
+    if data.userData.isSaved === true
+      +userDataEdited
+    else
+      +userData
+    if data.userContact.isSaved === true
+      +userContactEdited
+    else
+      +userContact
+    if data.userMedicos.isSaved === true
+      +userMedicosEdited
+    else
+      +userMedicos
+    if data.userEnfermedades.isSaved === true
+      +userEnfermedadesEdited
+    else
+      +userEnfermedades
+    if data.userSocial.isSaved === true
+      +userSocialEdited
+    else
+      +userSocial

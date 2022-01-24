@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/general.css">
+    <title>Masoterapia</title>
+  </head>
+  <body> 
+    <main>
+      <h1 id="title-main">Masoterapia & Resilencia</h1>
+      <div class="bg-admin">
+        <header class="d-flex header_admin">
+          <h2>Pacientes</h2>
+          <div class="btn_update">
+            <p class="refresh-text">Cargar</p><img class="refresh" src=".././img/ico/refresh.svg">
+          </div>
+        </header>
+        <div id="container-pacientes"></div>
+        <form class="container-codigo">
+          <h2>Cambiar codigo de seguridad </h2>
+          <p id="codigoActual"></p>
+          <input id="codigo" type="password" name="code" placeholder="Nuevo codigo">
+          <button class="btn btn-success btn-code">Actualizar</button>
+        </form>
+      </div>
+    </main>
+    <script src="./js/general.js" type="module"></script>
+  </body>
+</html>

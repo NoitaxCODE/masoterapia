@@ -1,0 +1,167 @@
+mixin userDataEdited
+  form.fila(action="/personal-form-data-edit" method="POST")
+    .subtitle.mt-4.mb-2
+      h3 Datos Personales
+      input.save(type="image", src=".././img/ico/edit.svg")
+    .mt-3
+      .table-responsive-sm
+        table.table.table-striped.table-hover.align-middle
+          tbody
+            tr
+              th Nombre:
+              td #{data.userData.nombre}
+            tr
+              th Sexo:
+              td #{data.userData.sexo}
+            tr
+              th Fecha de <br> nacimiento:
+              td #{data.userData.fechaDeNacimiento}
+            tr
+              th Estado Civil:
+                    td #{data.userData.estadoCivil}
+            tr
+              th Ocupacion:
+              td #{data.userData.ocupacion}
+
+
+mixin userContactEdited
+  form.fila(action="/contact-form-data-edit" method="POST")
+    .subtitle.mt-4.mb-2
+      h3 Datos de Contacto
+      input.save(type="image", src=".././img/ico/edit.svg")
+    .mt-3
+      .table-responsive-sm
+        table.table.table-striped.table-hover.align-middle
+          tbody
+            tr
+              th Domicilio:
+              td #{data.userContact.domicilio}
+            tr
+              th Localidad:
+              td #{data.userContact.localidad}
+            tr
+              th Cod. <br> Postal:
+              td #{data.userContact.cp}
+            tr
+              th Telefono:
+              td #{data.userContact.telefono}
+            tr
+              th Email:
+              td #{data.userContact.email}
+
+mixin userMedicosEdited
+  form.fila(action="/medicos-form-data-edit" method="POST")
+    .subtitle.mt-4.mb-2
+      h3 Datos Medicos
+      input.save(type="image", src=".././img/ico/edit.svg")
+    .mt-3
+      .table-responsive-sm
+        table.table.table-striped.table-hover.align-middle
+          tbody
+            tr
+              th Grupo <br> Sanguineo:
+              td #{data.userMedicos.sangre}
+            tr
+              th Hijos:
+              td #{data.userMedicos.hijos}
+            tr
+              th Embarazada:
+              td #{data.userMedicos.embarazada}
+            tr
+              th Ultima <br> Menstruacion:
+              td #{data.userMedicos.menstruacion}
+            tr
+              th Cirugias:
+              td #{data.userMedicos.cirugias}
+            tr
+              th Detalles:
+              td #{data.userMedicos.detalles}
+
+mixin userEnfermedadesEdited
+  form.fila(action="/enfermedades-form-data-edit" method="POST")
+    .subtitle.mt-4.mb-2
+      h3 Enfermedades <br> previas/existentes
+      input.save(type="image", src=".././img/ico/edit.svg")
+    .mt-3
+      .table-responsive-sm
+        table.table.table-striped.table-hover.align-middle
+          tbody
+            tr
+              th Diabetes:
+              td #{data.userEnfermedades.diabetes}
+            tr
+              th Marcapasos:
+              td #{data.userEnfermedades.marcapasos}
+            tr
+              th Alergias:
+              td #{data.userEnfermedades.alergias}
+            tr
+              th Asma:
+              td #{data.userEnfermedades.asma}
+            tr
+              th Sida:
+              td #{data.userEnfermedades.sida}
+            tr
+              th Epilepsia:
+              td #{data.userEnfermedades.epilepsia}
+            tr
+              th Protesis <br>dental:
+              td #{data.userEnfermedades.dental}
+            tr
+              th Lentes de <br>contacto:
+              td #{data.userEnfermedades.lentes}
+            tr
+              th Hipotenso:
+              td #{data.userEnfermedades.hipotenso}
+            tr
+              th Hipertenso:
+              td #{data.userEnfermedades.hipertenso}
+            tr
+              th Hepatitis:
+              td #{data.userEnfermedades.hepatitis}
+            tr
+              th Tipo:
+              td #{data.userEnfermedades.tipo}
+            tr
+              th Fracturas:
+              td #{data.userEnfermedades.fracturas}
+            tr
+              th Zona:
+              td #{data.userEnfermedades.zona}
+            tr
+              th Antiguedad:
+              td #{data.userEnfermedades.antiguedad}
+            tr
+              th Observaciones:
+              td #{data.userEnfermedades.observaciones}
+            tr
+              th Actividad <br>Fisica:
+              td #{data.userEnfermedades.actividad}
+            tr
+              th Detalle:
+              td #{data.userEnfermedades.detalle}
+            tr
+              th Esta bajo <br>atencion medica?:
+              td #{data.userEnfermedades.atencion}
+            tr
+              th Toma <br>medicamentos?:
+              td #{data.userEnfermedades.medicamentos}
+            tr
+              th Cuales?:
+              td #{data.userEnfermedades.cuales}
+
+mixin userSocialEdited
+  form.fila(action="/social-form-data-edit" method="POST")
+    .subtitle.mt-4.mb-2
+      h3 Obra social
+      input.save(type="image", src=".././img/ico/edit.svg")
+    .mt-3
+      .table-responsive-sm
+        table.table.table-striped.table-hover.align-middle
+          tbody
+            tr
+              th Nombre:
+              td #{data.userSocial.nombre}
+            tr
+              th Numero de<br> afiliado:
+              td #{data.userSocial.numero}

@@ -4,14 +4,32 @@
   justify-content: center;
   flex-direction: column;
   min-width: var(--small);
+  margin-top: 48px;
   &__input{
     min-width: var(--small);
   }
-  &__btn{
-    align-self: flex-end;
-    background-color: #97C21A;
-    color: white;
-    width: 12rem;
-    margin-top: 3rem;
+  &-container{
+    justify-content: space-around;
+    flex-direction: column;
+    &__btn:first-child{
+      background-color: #97C21A;
+      color: white;
+      width: 10rem;
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+@media screen and (min-width: 768px){
+  .form-login{
+    min-width: var(--middle);
+    margin-top: 10rem;
+  }
+}
+
+@media screen and (min-width: 1300px){
+  .form-login{
+    min-width: var(--large);
   }
 }
