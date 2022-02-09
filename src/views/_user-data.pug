@@ -4,12 +4,10 @@ include ./mixins/user-data-edited
 
 append main
   .bg
-    .fila
+    .fila.filaHeader
       .header
         h2 Ficha del paciente de masoterapia
-        a.btn.btn-outline-danger(href="/logout") Salir
-      label.fecha-actual.mt-4 Fecha:
-        input(type="date", name="")
+        a.btn.btn-outline-danger.btn-sm(href="/logout") Salir
     if data.userData.isSaved === true
       +userDataEdited
     else

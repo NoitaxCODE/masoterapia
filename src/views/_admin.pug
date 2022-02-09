@@ -6,12 +6,13 @@ append main
       .btn_update
         p.refresh-text Cargar
         img.refresh(src=".././img/ico/refresh.svg")
+      a.btn.btn-outline-danger.btn-sm(href="/logout") Salir
     #container-pacientes
     form.container-codigo
       h2 Cambiar codigo de seguridad 
       p#codigoActual
       input#codigo(type="password",name="code", placeholder="Nuevo codigo")
-      button(class="btn btn-success btn-code") Actualizar
+      button(class="btn btn-sm btn-code") Actualizar
 
 
 

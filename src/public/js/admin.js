@@ -256,8 +256,13 @@ export const cargarPacientes = async (e)=>{
 export const arrow = (e)=>{
 
   if (e.target.classList[0] === 'summaryDetails'){
+
     e.target.children[1].classList.toggle('arrow-down')
+
+  }else if(e.target.matches('.name-summary')){
+    e.target.nextElementSibling.classList.toggle('arrow-down')
   }else{
+
     e.target.classList.toggle('arrow-down')
   }
 
@@ -386,12 +391,10 @@ export const deleteUser = async (e)=>{
 }
 
 export const expandir = (e)=>{
-  if(e.target.matches(".arrow")){
+  if(e.target.matches(".arrow") || e.target.matches(".name-summary") ){
     
     e.target.parentElement.parentElement.classList.toggle("listDetails-close")
-  } else if (e.target.matches(".name-summary")){
-    console.log("entro")
-    e.target.parentElement.parentElement.classList.toggle("listDetails-close")
+
   }else{
     e.target.parentElement.classList.toggle("listDetails-close")
   }
@@ -428,4 +431,18 @@ export const updateCode = async (e)=>{
     console.log(error)
   }
   
+}
+
+export const getCode = async ()=> {
+  const currentCode = d.querySelector('#codigoActual')
+
+  if (currentCode) {
+    const res = await fetch('/getCode',
+    {
+      method: 'GET',
+    })
+    const code = await res.json()
+
+    currentCode.textContent = `El codigo actual es ${code.codigo}`
+  }
 }

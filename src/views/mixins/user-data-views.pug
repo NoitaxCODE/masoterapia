@@ -2,7 +2,6 @@ mixin userData
   form.fila(action="/personal-form-data" method="POST")
     .subtitle.mt-4.mb-2
       h3 Datos Personales
-      input.save(type="image", src=".././img/ico/save.svg")
     .bg__2
       label Nombre y apellido:
         input(type="text", name="nombre")
@@ -17,12 +16,12 @@ mixin userData
         input(type="text", name="estadoCivil")
       label.mt-3.w-100 Ocupacion:
         input(type="text", name="ocupacion")
+      input.save.saveBtn(type="image", src=".././img/ico/btnSave.svg")
 
 mixin userContact
   form.fila(action="/contact-form-data" method="POST")
     .subtitle.mt-4.mb-2
       h3 Datos de Contacto
-      input.save(type="image", src=".././img/ico/save.svg")
     .bg__2
       label Domicilio:
         input(type="text", name="domicilio")
@@ -34,12 +33,11 @@ mixin userContact
         input(type="tel", name="telefono")
       label.mt-3 E-mail:
         input(type="email", name="email")
-
+      input.save.saveBtn(type="image", src=".././img/ico/btnSave.svg")
 mixin userMedicos
   form.fila(action="/medicos-form-data" method="POST")
     .subtitle.mt-4.mb-2
       h3 Datos Medicos
-      input.save(type="image", src=".././img/ico/save.svg")
     .bg__2
       label Grupo sanguineo:
         input(type="text", name="sangre")
@@ -64,13 +62,14 @@ mixin userMedicos
             label(for="intervencsion-no") NO
             input#intervencion-no(type="radio", name="cirugias" value="NO")
       label.mt-3 Detalles de la int. Quir.:
-        textarea(name="detalles", cols="30", rows="8") 
+        textarea(name="detalles", cols="30", rows="8")
+      input.save.saveBtn(type="image", src=".././img/ico/btnSave.svg")
+
 
 mixin userEnfermedades
   form.fila(action="/enfermedades-form-data" method="POST")
     .subtitle.mt-4.mb-2
       h3 Enfermedades <br> previas/existentes
-      input.save(type="image", src=".././img/ico/save.svg")
     .bg__2
       .bg__2__radio.bg__2__row-1
         label Diabetes:
@@ -225,14 +224,15 @@ mixin userEnfermedades
             input#intervencion-no(type="radio", name="medicamentos" value="NO")
       label.mt-3.bg__2__row-21 Cuales?
         textarea(name="cuales", cols="30", rows="2")
+      input.save.saveBtn(type="image", src=".././img/ico/btnSave.svg")
 
 mixin userSocial
   form.fila(action="/social-form-data" method="POST")
     .subtitle.mt-4.mb-2
       h3 Obra social
-      input.save(type="image", src=".././img/ico/save.svg")
     .bg__2
       label Nombre:
         input(type="text", name="nombre")
       label.mt-3 Numero de afiliado:
         input(type="text", name="numero")
+      input.save.saveBtn(type="image", src=".././img/ico/btnSave.svg")

@@ -11671,7 +11671,7 @@ textarea.form-control-lg {
 }
 
 body {
-  background-color: var(--bg-color);
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
   height: 100vh;
   display: grid;
   padding: 0.5rem;
@@ -11682,10 +11682,11 @@ main {
   background-color: #fff;
   border-radius: 1rem;
   padding-top: 0.1rem;
+  box-shadow: 0 0 4px black;
 }
 
 #title-main {
-  font-family: "cursive";
+  font-family: "Merriweather", serif;
   font-size: 1.8rem;
   max-width: 10rem;
   text-align: center;
@@ -11747,11 +11748,14 @@ select {
   margin: 1rem;
   display: grid;
   justify-items: center;
+  grid-row-gap: 2rem;
 }
 .bg__2 {
-  background-color: #E0E9F6;
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
   padding: 1rem;
   max-width: 320px;
+  box-shadow: 0 0 3px black;
+  border-radius: 5px;
 }
 .bg__2 label {
   width: 100%;
@@ -11790,6 +11794,10 @@ select {
   width: 5rem;
 }
 
+.filaHeader {
+  width: 100%;
+}
+
 #title-main {
   margin-top: 1rem;
 }
@@ -11803,7 +11811,7 @@ select {
 .subtitle {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   max-width: 320px;
 }
 .subtitle h3 {
@@ -11821,10 +11829,15 @@ select {
   font-size: 1rem;
   margin-top: 0;
   margin-bottom: 0;
+  max-width: 10rem;
+}
+.header a {
+  align-self: center;
 }
 
 .fila {
-  width: 100%;
+  max-width: 320px;
+  min-width: 300px;
 }
 .fila .mt-3 table {
   width: 100%;
@@ -11835,6 +11848,27 @@ select {
   height: 1.3rem;
 }
 
+td {
+  max-width: 180px;
+  box-sizing: border-box;
+  border-collapse: collapse;
+  overflow: scroll;
+  text-align: start;
+  text-size-adjust: 100%;
+  text-indent: 0;
+  vertical-align: middle;
+}
+
+.bg__2 .saveBtn {
+  width: 7rem;
+  margin: 1rem auto 0;
+  display: block;
+}
+
+.btnEdit {
+  width: 7rem;
+}
+
 @media screen and (min-width: 768px) {
   .bg {
     grid-template-columns: 1fr 1fr;
@@ -11842,6 +11876,7 @@ select {
   }
 
   .fila:first-child {
+    max-width: 768px;
     grid-column: 1/span 2;
     grid-row: 1/2;
     display: flex;
@@ -11866,6 +11901,7 @@ select {
   .fila:nth-child(5) {
     grid-row: 6/12;
     grid-column: 1/span 2;
+    max-width: 768px;
   }
   .fila:nth-child(5) .subtitle {
     max-width: 706px;
@@ -11878,7 +11914,10 @@ select {
     grid-row: 4/6;
   }
   .fila:last-child .bg__2 {
-    height: 654px;
+    height: 709px;
+  }
+  .fila:last-child .saveBtn {
+    margin-top: auto;
   }
 
   .fecha-actual {
@@ -12053,6 +12092,7 @@ select {
   box-shadow: 0 0 5px black;
   border-radius: 4px;
   box-sizing: border-box;
+  overflow: scroll;
 }
 .listDetails table, .listDetails .subtitle {
   padding: 0 0.3rem;
@@ -12065,6 +12105,7 @@ select {
   width: 100%;
   justify-content: space-between;
   align-items: flex-end;
+  margin-bottom: 2rem;
 }
 
 #container-pacientes {
@@ -12154,6 +12195,9 @@ td.inputEdit {
 .btn_update {
   background-color: #d1f5d3;
 }
+.btn_update:hover {
+  box-shadow: 0 0 5px black;
+}
 
 .refresh {
   margin-right: 0.2rem;
@@ -12171,7 +12215,7 @@ td.inputEdit {
   align-items: center;
   flex-direction: column;
   padding: 2rem;
-  box-shadow: 0 0 3px black;
+  box-shadow: 0 0 5px black;
   border-radius: 5%;
 }
 .container-codigo h2 {
@@ -12185,6 +12229,16 @@ td.inputEdit {
   width: 2rem;
   height: 2rem;
   margin-top: 1rem;
+}
+
+.btn-code {
+  background-color: #d1f5d3;
+  box-shadow: 0 0 2px #313131;
+  border-radius: 0.5rem;
+  color: #1F8B24;
+}
+.btn-code:hover {
+  box-shadow: 0 0 5px black;
 }
 
 .header_admin .spinner-border {
@@ -12201,9 +12255,18 @@ td.inputEdit {
     max-width: 280px;
   }
 }
-@media screen and (min-width: 820px) {
+@media screen and (min-width: 768px) {
   #container-pacientes {
     grid-template-columns: 1fr 1fr;
     grid-gap: 2rem;
+  }
+}
+@media screen and (min-width: 1300px) {
+  #container-pacientes {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  main {
+    min-width: 1200px;
   }
 }

@@ -5,24 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/general.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&amp;display=swap" rel="stylesheet">
     <title>Masoterapia</title>
   </head>
   <body> 
     <main>
-      <h1 id="title-main">Masoterapia & Resilencia</h1>
+      <h1 id="title-main">Masoterapia & <br>Resilencia</h1>
       <div class="bg-admin">
         <header class="d-flex header_admin">
           <h2>Pacientes</h2>
           <div class="btn_update">
             <p class="refresh-text">Cargar</p><img class="refresh" src=".././img/ico/refresh.svg">
-          </div>
+          </div><a class="btn btn-outline-danger btn-sm" href="/logout">Salir</a>
         </header>
         <div id="container-pacientes"></div>
         <form class="container-codigo">
           <h2>Cambiar codigo de seguridad </h2>
           <p id="codigoActual"></p>
           <input id="codigo" type="password" name="code" placeholder="Nuevo codigo">
-          <button class="btn btn-success btn-code">Actualizar</button>
+          <button class="btn btn-sm btn-code">Actualizar</button>
         </form>
       </div>
     </main>

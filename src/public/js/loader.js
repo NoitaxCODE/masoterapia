@@ -24,11 +24,18 @@ export const loader = (e)=>{
       document.querySelector('.btn-code').replaceWith($ico)
 
     },10)
+  }else if(e.target.matches('.save') && e.target.matches('.saveBtn')){
+    setTimeout(()=>{
+      $ico.classList.add('m-auto')
+      $ico.classList.add('d-block')
+      e.target.replaceWith($ico)
+    },10)
   }else{
 
     setTimeout(()=>{
   
       e.target.parentNode.replaceChild($ico, e.target.parentNode.children[1])
+
   
     },10)
 

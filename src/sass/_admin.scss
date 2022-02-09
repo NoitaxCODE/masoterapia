@@ -12,6 +12,7 @@
   box-shadow: 0 0 5px black;
   border-radius: 4px;
   box-sizing: border-box;
+  overflow: scroll;
   & table, & .subtitle{
     padding: 0 .3rem;
   }
@@ -25,6 +26,7 @@
   width: 100%;
   justify-content: space-between;
   align-items: flex-end;
+  margin-bottom: 2rem;
 }
 
 #container-pacientes{
@@ -114,6 +116,9 @@ td.inputEdit{
 }
 .btn_update{
   background-color: hsl(123, 64%, 89%);
+  &:hover{
+    box-shadow: 0 0 5px black;
+  }
 }
 .refresh{
   margin-right: .2rem;
@@ -131,7 +136,7 @@ td.inputEdit{
   align-items: center;
   flex-direction: column;
   padding: 2rem;
-  box-shadow: 0 0 3px black;
+  box-shadow: 0 0 5px black;
   border-radius: 5%;
   & h2{
     margin: 0 0 1rem;
@@ -144,6 +149,16 @@ td.inputEdit{
   width: 2rem;
   height: 2rem;
   margin-top: 1rem;
+}
+
+.btn-code{
+  background-color: hsl(123, 64%, 89%);
+  box-shadow: 0 0 2px rgb(49, 49, 49);
+  border-radius: .5rem;
+  color: #1F8B24;
+  &:hover{
+    box-shadow: 0 0 5px black;
+  }
 }
 .header_admin .spinner-border{
   width: 2rem;
@@ -160,10 +175,18 @@ td.inputEdit{
 
 }
 
-@media screen and (min-width: 820px){
+@media screen and (min-width: 768px){
   #container-pacientes{
     grid-template-columns: 1fr 1fr;
     grid-gap: 2rem;
   }
+}
 
+@media screen and (min-width: 1300px){
+  #container-pacientes{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  main{
+    min-width: 1200px;
+  }
 }
