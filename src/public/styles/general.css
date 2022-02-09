@@ -11679,16 +11679,18 @@ body {
 }
 
 main {
-  background-color: #fff;
+  --color: rgba(0, 0, 0, 0.6);
+  background: linear-gradient(var(--color), var(--color)), url(../img/bg/bg.jpg) center/cover;
   border-radius: 1rem;
   padding-top: 0.1rem;
   box-shadow: 0 0 4px black;
 }
 
 #title-main {
-  font-family: "Merriweather", serif;
+  color: #ffffff;
+  font-family: "Cutive", serif;
   font-size: 1.8rem;
-  max-width: 10rem;
+  max-width: 15rem;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
