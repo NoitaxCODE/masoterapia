@@ -64,7 +64,7 @@ router.post('/signup', (req, res, next)=>{
   
 router.get('/user-data',isAuthenticated, renderUser);
 
-router.get('/admin', isAuthenticated, (req, res, next)=>{
+router.get('/admin', isAdmin, isAuthenticated, (req, res, next)=>{
   res.render('_admin')
 })
 
@@ -75,11 +75,9 @@ router.get('/logout', isAuthenticated, (req, res, next)=>{
 
 router.post('/personal-form-data', isAuthenticated, async (req ,res ,next )=> {
   const userSesion = req.session.user_data;
-
   const completed =  await userData.userData(req.body, userSesion, false);
 
-
-  if (completed === true) res.redirect('/user-data')
+  if (completed === true) res.redirect('/user-data');
 
   next();
 
@@ -180,13 +178,13 @@ router.post('/medicos-form-data-edit', isAuthenticated, async (req ,res ,next )=
 });
 
 
-router.get('/cargarPacientes', isAuthenticated, async (req, res, next)=>{
+router.get('/cargarPacientes', isAdmin, isAuthenticated, async (req, res, next)=>{
   const pacientes = await User.find()
   res.json(pacientes)
   next();
 });
 
-router.put('/saveAdmin', isAuthenticated, async (req, res, next)=>{
+router.put('/saveAdmin', isAdmin, isAuthenticated, async (req, res, next)=>{
 
   const completed = await updateAdmin(req.body)
 
@@ -195,7 +193,7 @@ router.put('/saveAdmin', isAuthenticated, async (req, res, next)=>{
   next();
 });
 
-router.delete('/deleteUser/:id', isAuthenticated, async (req, res, next)=>{
+router.delete('/deleteUser/:id', isAdmin, isAuthenticated, async (req, res, next)=>{
   try {
 
   const userDeleted = await User.findByIdAndDelete(req.params.id)
@@ -210,7 +208,7 @@ router.delete('/deleteUser/:id', isAuthenticated, async (req, res, next)=>{
   
 })
 
-router.put('/updateCode', isAuthenticated, async (req, res, next)=>{
+router.put('/updateCode', isAdmin, isAuthenticated, async (req, res, next)=>{
   try {
     let codigo = req.body.codigo,
         codeUpdated = await Code.updateOne({codigo});
@@ -224,7 +222,7 @@ router.put('/updateCode', isAuthenticated, async (req, res, next)=>{
   }
 })
 
-router.get('/getCode', isAuthenticated, async (req,res,next)=>{
+router.get('/getCode', isAdmin, isAuthenticated, async (req,res,next)=>{
   try {
 
     const code = await Code.find()
@@ -241,7 +239,17 @@ function isAuthenticated(req, res, next){
     return next();
   }
   res.redirect('/');
+}
 
+async function isAdmin(req, res, next){
+
+  const user = await User.findOne({email: req.session.user_data.email})
+
+  if (user.admin) return next();
+
+  res.redirect('/')
+
+  console.log(user.admin)
 }
 
 module.exports = router;

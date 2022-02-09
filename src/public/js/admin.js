@@ -9,242 +9,244 @@ export const cargarPacientes = async (e)=>{
     json = await pacientes.json(),
     $container = d.querySelector('#container-pacientes'),
     $fragment = d.createDocumentFragment();
-    
     $btnCargar.setAttribute('class','btn_update');
     $btnCargar.innerHTML = `<p class="refresh-text">Cargar</p>
                             <img class="refresh" src=".././img/ico/refresh.svg">`;
 
+    console.log(json)
     if(pacientes.status === 200) document.querySelector('[data-cargarpacientes]').replaceWith($btnCargar)
 
     json.forEach(el => {
-      const $details = d.createElement('details');
-      $details.classList.add('listDetails');
-      $details.classList.add('listDetails-close');
-      $details.classList.add('mt-3');
-      $details.setAttribute('data-id',`${el._id}`)
+      if(!el.admin){
+        const $details = d.createElement('details');
+        $details.classList.add('listDetails');
+        $details.classList.add('listDetails-close');
+        $details.classList.add('mt-3');
+        $details.setAttribute('data-id',`${el._id}`)
 
-      $details.innerHTML = `
-      <div data-id-delete="${el._id}" class="trash-container">
-        <div data-id-delete="${el._id}" class="trash">
-          <p data-id-delete="${el._id}" class="delete-text">Borrar</p>
-          <img data-id-delete="${el._id}" class="delete" data-userData src=".././img/ico/delete.svg">
+        $details.innerHTML = `
+        <div data-id-delete="${el._id}" class="trash-container">
+          <div data-id-delete="${el._id}" class="trash">
+            <p data-id-delete="${el._id}" class="delete-text">Borrar</p>
+            <img data-id-delete="${el._id}" class="delete" data-userData src=".././img/ico/delete.svg">
+          </div>
         </div>
-      </div>
-      <div class="subtitle-admin mt-4 mb-2">
-        <h3 class="userDataEdit" data-id-spiner-${el._id}>Datos Personales</h3>
-        <img class="edit" data-userData src=".././img/ico/edit.svg">
-      </div>
-      <div class="table-responsive-sm mt-3">
-        <table class="table table-striped table-hover align-middle">
-          <tbody>
-            <tr>
-              <th data-name="nombre">Nombre:</th>
-              <td class="userDataEdit" data-id-edit-${el._id}>${el.userData.nombre}</td>
-            </tr>
-            <tr>
-              <th data-name="sexo">Sexo:</th>
-              <td class="userDataEdit" data-id-edit-${el._id}>${el.userData.sexo}</td>
-            </tr>
-            <tr>
-              <th data-name="fechaDeNacimiento">Fecha de nacimiento:</th>
-              <td class="userDataEdit" data-id-edit-${el._id}>${el.userData.fechaDeNacimiento}</td>
-            </tr>
-            <tr>
-              <th data-name="estadoCivil">Estado Civil:</th>
-              <td class="userDataEdit" data-id-edit-${el._id}>${el.userData.estadoCivil}</td>
-            </tr>
-            <tr>
-              <th data-name="ocupacion">Ocupacion:</th>
-              <td class="userDataEdit" data-id-edit-${el._id}>${el.userData.ocupacion}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="subtitle-admin mt-4 mb-2">
-        <h3 class="userContactEdit" data-id-spiner-${el._id}>Datos de Contacto</h3>
-        <img class="edit" data-userContact src=".././img/ico/edit.svg">
-      </div>
-      <div class="table-responsive-sm mt-3">
-        <table class="table table-striped table-hover align-middle">
-          <tbody>
-            <tr>
-              <th data-name="domicilio">Domicilio:</th>
-              <td class="userContactEdit" data-id-edit-${el._id}>${el.userContact.domicilio}</td>
-            </tr>
-            <tr>
-              <th data-name="localidad">Localidad:</th>
-              <td class="userContactEdit" data-id-edit-${el._id}>${el.userContact.localidad}</td>
-            </tr>
-            <tr>
-              <th data-name="cp">Codigo Postal:</th>
-              <td class="userContactEdit" data-id-edit-${el._id}>${el.userContact.cp}</td>
-            </tr>
-            <tr>
-              <th data-name="telefono">Telefono:</th>
-              <td class="userContactEdit" data-id-edit-${el._id}>${el.userContact.telefono}</td>
-            </tr>
-            <tr>
-              <th data-name="email">Email:</th>
-              <td class="userContactEdit" data-id-edit-${el._id}>${el.userContact.email}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="subtitle-admin mt-4 mb-2">
-        <h3 class="userMedicosEdit" data-id-spiner-${el._id}>Datos Medicos</h3>
-        <img class="edit" data-userMedicos src=".././img/ico/edit.svg">
-      </div>
-      <div class="table-responsive-sm mt-3">
-        <table class="table table-striped table-hover align-middle">
-          <tbody>
-            <tr>
-              <th data-name="sangre">Grupo sanguineo:</th>
-              <td class="userMedicosEdit" data-id-edit-${el._id}>${el.userMedicos.sangre}</td>
-            </tr>
-            <tr>
-              <th data-name="hijos">Hijos:</th>
-              <td class="userMedicosEdit" data-id-edit-${el._id}>${el.userMedicos.hijos}</td>
-            </tr>
-            <tr>
-              <th data-name="embarazada">Embarazada:</th>
-              <td class="userMedicosEdit" data-id-edit-${el._id}>${el.userMedicos.embarazada}</td>
-            </tr>
-            <tr>
-              <th data-name="menstruacion">Ultima menstruacion:</th>
-              <td class="userMedicosEdit" data-id-edit-${el._id}>${el.userMedicos.menstruacion}</td>
-            </tr>
-            <tr>
-              <th data-name="cirujias">Cirujias:</th>
-              <td class="userMedicosEdit" data-id-edit-${el._id}>${el.userMedicos.cirujias}</td>
-            </tr>
-            <tr>
-              <th data-name="detalles">Detalles:</th>
-              <td class="userMedicosEdit" data-id-edit-${el._id}>${el.userMedicos.detalles}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="subtitle-admin mt-4 mb-2">
-        <h3 class="userEnfermedadesEdit" data-id-spiner-${el._id}>Enfermedades</br> previas/existentes</h3>
-        <img class="edit" data-userEnfermedades src=".././img/ico/edit.svg">
-      </div>
-      <div class="table-responsive-sm mt-3">
-        <table class="table table-striped table-hover align-middle">
-          <tbody>
-            <tr>
-              <th data-name="diabetes">Diabetes:</th>
-              <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.diabetes}</td>
-            </tr>
-            <tr>
-              <th data-name="marcapasos">Marcapasos:</th>
-              <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.marcapasos}</td>
-            </tr>
-            <tr>
-              <th data-name="alergias">Alergias:</th>
-              <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.alergias}</td>
-            </tr>
-            <tr>
-              <th data-name="asma">Asma:</th>
-              <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.asma}</td>
-            </tr>
-            <tr>
-              <th data-name="sida">Sida:</th>
-              <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.sida}</td>
-            </tr>
-            <tr>
-              <th data-name="epilepsia">Epilepsia:</th>
-              <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.epilepsia}</td>
-            </tr>
-            <tr>
-              <th data-name="dental">Protesis dental:</th>
-              <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.dental}</td>
-            </tr>
-            <tr>
-              <th data-name="lentes">Lentes de contacto:</th>
-              <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.lentes}</td>
-            </tr>
-            <tr>
-              <th data-name="hipotenso">Hipotenso:</th>
-              <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.hipotenso}</td>
-            </tr>
-            <tr>
-              <th data-name="hipertenso">Hipertenso:</th>
-              <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.hipertenso}</td>
-            </tr>
-            <tr>
-              <th data-name="hepatitis">Hepatitis:</th>
-              <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.hepatitis}</td>
-            </tr>
-            <tr>
-              <th data-name="tipo">Tipo:</th>
-              <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.tipo}</td>
-            </tr>
-            <tr>
-              <th data-name="fracturas">Fracturas:</th>
-              <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.fracturas}</td>
-            </tr>
-            <tr>
-              <th data-name="zona">Zona:</th>
-              <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.zona}</td>
-            </tr>
-            <tr>
-              <th data-name="antiguedad">Antiguedad:</th>
-              <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.antiguedad}</td>
-            </tr>
-            <tr>
-              <th data-name="observaciones">Observaciones:</th>
-              <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.observaciones}</td>
-            </tr>
-            <tr>
-              <th data-name="actividad">Actividad fisica:</th>
-              <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.actividad}</td>
-            </tr>
-            <tr>
-              <th data-name="detalle">Detalle:</th>
-              <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.detalle}</td>
-            </tr>
-            <tr>
-              <th data-name="atencion">Esta bajo atencion medica?:</th>
-              <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.atencion}</td>
-            </tr>
-            <tr>
-              <th data-name="medicamentos">Toma medicamentos?:</th>
-              <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.medicamentos}</td>
-            </tr>
-            <tr>
-              <th data-name="cuales">Cuales?:</th>
-              <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.cuales}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="subtitle-admin mt-4 mb-2">
-        <h3 class="userSocialEdit" data-id-spiner-${el._id}>Obra social</h3>
-        <img class="edit" data-userSocial src=".././img/ico/edit.svg">
-      </div>
-      <div class="table-responsive-sm mt-3">
-        <table class="table table-striped table-hover align-middle">
-          <tbody>
-            <tr>
-              <th data-name="nombre">Nombre:</th>
-              <td class="userSocialEdit" data-id-edit-${el._id}>${el.userSocial.nombre}</td>
-            </tr>
-            <tr>
-              <th data-name="numero">Numero:</th>
-              <td class="userSocialEdit" data-id-edit-${el._id}>${el.userSocial.numero}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <summary class="summaryDetails">
-        <h3 class="name-summary">${el.userData.nombre}</h3>
-        <div class="arrow"></div>
-      </summary>  
+        <div class="subtitle-admin mt-4 mb-2">
+          <h3 class="userDataEdit" data-id-spiner-${el._id}>Datos Personales</h3>
+          <img class="edit" data-userData src=".././img/ico/edit.svg">
+        </div>
+        <div class="table-responsive-sm mt-3">
+          <table class="table table-striped table-hover align-middle">
+            <tbody>
+              <tr>
+                <th data-name="nombre">Nombre:</th>
+                <td class="userDataEdit" data-id-edit-${el._id}>${el.userData.nombre}</td>
+              </tr>
+              <tr>
+                <th data-name="sexo">Sexo:</th>
+                <td class="userDataEdit" data-id-edit-${el._id}>${el.userData.sexo}</td>
+              </tr>
+              <tr>
+                <th data-name="fechaDeNacimiento">Fecha de nacimiento:</th>
+                <td class="userDataEdit" data-id-edit-${el._id}>${el.userData.fechaDeNacimiento}</td>
+              </tr>
+              <tr>
+                <th data-name="estadoCivil">Estado Civil:</th>
+                <td class="userDataEdit" data-id-edit-${el._id}>${el.userData.estadoCivil}</td>
+              </tr>
+              <tr>
+                <th data-name="ocupacion">Ocupacion:</th>
+                <td class="userDataEdit" data-id-edit-${el._id}>${el.userData.ocupacion}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="subtitle-admin mt-4 mb-2">
+          <h3 class="userContactEdit" data-id-spiner-${el._id}>Datos de Contacto</h3>
+          <img class="edit" data-userContact src=".././img/ico/edit.svg">
+        </div>
+        <div class="table-responsive-sm mt-3">
+          <table class="table table-striped table-hover align-middle">
+            <tbody>
+              <tr>
+                <th data-name="domicilio">Domicilio:</th>
+                <td class="userContactEdit" data-id-edit-${el._id}>${el.userContact.domicilio}</td>
+              </tr>
+              <tr>
+                <th data-name="localidad">Localidad:</th>
+                <td class="userContactEdit" data-id-edit-${el._id}>${el.userContact.localidad}</td>
+              </tr>
+              <tr>
+                <th data-name="cp">Codigo Postal:</th>
+                <td class="userContactEdit" data-id-edit-${el._id}>${el.userContact.cp}</td>
+              </tr>
+              <tr>
+                <th data-name="telefono">Telefono:</th>
+                <td class="userContactEdit" data-id-edit-${el._id}>${el.userContact.telefono}</td>
+              </tr>
+              <tr>
+                <th data-name="email">Email:</th>
+                <td class="userContactEdit" data-id-edit-${el._id}>${el.userContact.email}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="subtitle-admin mt-4 mb-2">
+          <h3 class="userMedicosEdit" data-id-spiner-${el._id}>Datos Medicos</h3>
+          <img class="edit" data-userMedicos src=".././img/ico/edit.svg">
+        </div>
+        <div class="table-responsive-sm mt-3">
+          <table class="table table-striped table-hover align-middle">
+            <tbody>
+              <tr>
+                <th data-name="sangre">Grupo sanguineo:</th>
+                <td class="userMedicosEdit" data-id-edit-${el._id}>${el.userMedicos.sangre}</td>
+              </tr>
+              <tr>
+                <th data-name="hijos">Hijos:</th>
+                <td class="userMedicosEdit" data-id-edit-${el._id}>${el.userMedicos.hijos}</td>
+              </tr>
+              <tr>
+                <th data-name="embarazada">Embarazada:</th>
+                <td class="userMedicosEdit" data-id-edit-${el._id}>${el.userMedicos.embarazada}</td>
+              </tr>
+              <tr>
+                <th data-name="menstruacion">Ultima menstruacion:</th>
+                <td class="userMedicosEdit" data-id-edit-${el._id}>${el.userMedicos.menstruacion}</td>
+              </tr>
+              <tr>
+                <th data-name="cirujias">Cirujias:</th>
+                <td class="userMedicosEdit" data-id-edit-${el._id}>${el.userMedicos.cirujias}</td>
+              </tr>
+              <tr>
+                <th data-name="detalles">Detalles:</th>
+                <td class="userMedicosEdit" data-id-edit-${el._id}>${el.userMedicos.detalles}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="subtitle-admin mt-4 mb-2">
+          <h3 class="userEnfermedadesEdit" data-id-spiner-${el._id}>Enfermedades</br> previas/existentes</h3>
+          <img class="edit" data-userEnfermedades src=".././img/ico/edit.svg">
+        </div>
+        <div class="table-responsive-sm mt-3">
+          <table class="table table-striped table-hover align-middle">
+            <tbody>
+              <tr>
+                <th data-name="diabetes">Diabetes:</th>
+                <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.diabetes}</td>
+              </tr>
+              <tr>
+                <th data-name="marcapasos">Marcapasos:</th>
+                <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.marcapasos}</td>
+              </tr>
+              <tr>
+                <th data-name="alergias">Alergias:</th>
+                <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.alergias}</td>
+              </tr>
+              <tr>
+                <th data-name="asma">Asma:</th>
+                <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.asma}</td>
+              </tr>
+              <tr>
+                <th data-name="sida">Sida:</th>
+                <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.sida}</td>
+              </tr>
+              <tr>
+                <th data-name="epilepsia">Epilepsia:</th>
+                <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.epilepsia}</td>
+              </tr>
+              <tr>
+                <th data-name="dental">Protesis dental:</th>
+                <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.dental}</td>
+              </tr>
+              <tr>
+                <th data-name="lentes">Lentes de contacto:</th>
+                <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.lentes}</td>
+              </tr>
+              <tr>
+                <th data-name="hipotenso">Hipotenso:</th>
+                <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.hipotenso}</td>
+              </tr>
+              <tr>
+                <th data-name="hipertenso">Hipertenso:</th>
+                <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.hipertenso}</td>
+              </tr>
+              <tr>
+                <th data-name="hepatitis">Hepatitis:</th>
+                <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.hepatitis}</td>
+              </tr>
+              <tr>
+                <th data-name="tipo">Tipo:</th>
+                <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.tipo}</td>
+              </tr>
+              <tr>
+                <th data-name="fracturas">Fracturas:</th>
+                <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.fracturas}</td>
+              </tr>
+              <tr>
+                <th data-name="zona">Zona:</th>
+                <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.zona}</td>
+              </tr>
+              <tr>
+                <th data-name="antiguedad">Antiguedad:</th>
+                <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.antiguedad}</td>
+              </tr>
+              <tr>
+                <th data-name="observaciones">Observaciones:</th>
+                <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.observaciones}</td>
+              </tr>
+              <tr>
+                <th data-name="actividad">Actividad fisica:</th>
+                <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.actividad}</td>
+              </tr>
+              <tr>
+                <th data-name="detalle">Detalle:</th>
+                <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.detalle}</td>
+              </tr>
+              <tr>
+                <th data-name="atencion">Esta bajo atencion medica?:</th>
+                <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.atencion}</td>
+              </tr>
+              <tr>
+                <th data-name="medicamentos">Toma medicamentos?:</th>
+                <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.medicamentos}</td>
+              </tr>
+              <tr>
+                <th data-name="cuales">Cuales?:</th>
+                <td class="userEnfermedadesEdit" data-id-edit-${el._id}>${el.userEnfermedades.cuales}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="subtitle-admin mt-4 mb-2">
+          <h3 class="userSocialEdit" data-id-spiner-${el._id}>Obra social</h3>
+          <img class="edit" data-userSocial src=".././img/ico/edit.svg">
+        </div>
+        <div class="table-responsive-sm mt-3">
+          <table class="table table-striped table-hover align-middle">
+            <tbody>
+              <tr>
+                <th data-name="nombre">Nombre:</th>
+                <td class="userSocialEdit" data-id-edit-${el._id}>${el.userSocial.nombre}</td>
+              </tr>
+              <tr>
+                <th data-name="numero">Numero:</th>
+                <td class="userSocialEdit" data-id-edit-${el._id}>${el.userSocial.numero}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <summary class="summaryDetails">
+          <h3 class="name-summary">${el.userData.nombre}</h3>
+          <div class="arrow"></div>
+        </summary>  
 
-      
-        `;
+        
+          `;
 
-        $fragment.appendChild($details)
+          $fragment.appendChild($details)
+      }
     });
     
     $container.replaceChildren($fragment)

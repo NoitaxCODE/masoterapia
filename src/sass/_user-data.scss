@@ -4,9 +4,10 @@
   justify-items: center;
   grid-row-gap: 2rem;
   &__2{
-    // background-color: #E0E9F6;
+    position: relative;
     background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
     padding: 1rem;
+    padding-bottom: 4rem;
     max-width: 320px;
     box-shadow: 0 0 3px black;
     border-radius: 5px;
@@ -115,10 +116,25 @@ td{
   width: 7rem;
   margin: 1rem auto 0;
   display: block;
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
 }
 
 .btnEdit{
   width: 7rem;
+}
+
+.spinnerSave{
+  display: block;
+  margin: 16px auto 0;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
 }
 @media screen and (min-width: 768px){
 
@@ -160,7 +176,7 @@ td{
   .fila:last-child{
     grid-row: 4 / 6;
     & .bg__2{
-      height: 709px;
+      height: 700px;
     }
     & .saveBtn{
       margin-top: auto;

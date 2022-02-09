@@ -26,8 +26,7 @@ export const loader = (e)=>{
     },10)
   }else if(e.target.matches('.save') && e.target.matches('.saveBtn')){
     setTimeout(()=>{
-      $ico.classList.add('m-auto')
-      $ico.classList.add('d-block')
+      $ico.classList.add('spinnerSave')
       e.target.replaceWith($ico)
     },10)
   }else{
