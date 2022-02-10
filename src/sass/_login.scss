@@ -1,3 +1,11 @@
+.bg-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .form-login{
   display: flex;
   align-items: center;
@@ -16,8 +24,20 @@
       color: white;
       width: 10rem;
       margin-top: 3rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
     }
+    &__btnBack{
+      color: white;
+      width: 10rem;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      background-color: #FA7414;
+      margin-top: 0;
+    }
+    
+  }
+  & label{
+    color: #ffffff;
   }
 }
 

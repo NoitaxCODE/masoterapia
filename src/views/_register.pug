@@ -1,21 +1,23 @@
 extends ./index.pug
 append main
-  .container.d-flex.justify-content-center
-    form#form-reg.form-login(action="/signup" method="POST")
-      .mb-3.mt-5
-        if signupMessage.length > 0
-          p.alert.alert-danger #{signupMessage}
-        label.form-label(for='email-reg') Email
-        input#email.reg.form-control.form-login__input(name="email" type='email' aria-describedby='emailHelp')
-      .mb-3
-        label.form-label(for='pass-reg') Password
-        input#pass-reg.form-control.form-login__input(name="password" type='password' data-pass)
-      .mb-3
-        label.form-label(for='repass-reg') Re-Password
-        input#repass-reg.form-control.form-login__input(name="rePassword" type='password' data-pass)
-      .mb-3
-        label.form-label(for='code-reg') Codigo
-        input#code-reg.form-control.form-login__input(name="codigo" type='password')
-      .mb-3.d-flex.justify-content-center.w-100
-        button#btnRegistro.btn.form-login-container__btn(type='submit') Crear cuenta
-      
+  .bg-container
+    h1#title-main-login Masoterapia & Resilencia
+    .container.d-flex.justify-content-center
+      form#form-reg.form-login.form-login-register(action="/signup" method="POST")
+        .mb-3.mt-5
+          if signupMessage.length > 0
+            p.alert.alert-danger #{signupMessage}
+          label.form-label(for='email-reg') Email
+          input#email.reg.form-control.form-login__input(name="email" type='email' aria-describedby='emailHelp')
+        .mb-3
+          label.form-label(for='pass-reg') Password
+          input#pass-reg.form-control.form-login__input(name="password" type='password' data-pass)
+        .mb-3
+          label.form-label(for='repass-reg') Re-Password
+          input#repass-reg.form-control.form-login__input(name="rePassword" type='password' data-pass)
+        .mb-3
+          label.form-label(for='code-reg') Codigo
+          input#code-reg.form-control.form-login__input(name="codigo" type='password')
+        .mb-3.d-flex.justify-content-around.w-100.flex-column.align-items-center
+          button#btnRegistro.btn.form-login-container__btn(type='submit') Crear cuenta
+          a.btn.form-login-container__btn.form-login-container__btnBack(href="/") Volver

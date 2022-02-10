@@ -249,7 +249,6 @@ async function isAdmin(req, res, next){
 
   res.redirect('/')
 
-  console.log(user.admin)
 }
 
 module.exports = router;

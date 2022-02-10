@@ -13,7 +13,6 @@ export const cargarPacientes = async (e)=>{
     $btnCargar.innerHTML = `<p class="refresh-text">Cargar</p>
                             <img class="refresh" src=".././img/ico/refresh.svg">`;
 
-    console.log(json)
     if(pacientes.status === 200) document.querySelector('[data-cargarpacientes]').replaceWith($btnCargar)
 
     json.forEach(el => {
@@ -271,7 +270,6 @@ export const arrow = (e)=>{
 }
 
 const editData = (userClass, id)=>{
-  console.log("llego a edit data")
 
   let dataItems = d.querySelectorAll(userClass + `[data-id-edit-${id}]`)
   
@@ -288,7 +286,6 @@ const sendData = async (userClass, id)=>{
     data = {id,
             form: ''
           };
-    console.log(userClass)
 
     if(userClass === '.userDataEdit') data.form = 'userData'
     if(userClass === '.userContactEdit') data.form = 'userContact'
@@ -337,7 +334,6 @@ const sendData = async (userClass, id)=>{
 }
 
 export const edit = (e)=>{
-  console.log("llego")
   let id;
   id= e.target.parentNode.parentNode.getAttribute('data-id')
 
@@ -376,7 +372,6 @@ export const deleteUser = async (e)=>{
 
     if (confirm){
       const id = e.target.getAttribute('data-id-delete')
-      console.log(id)
       const res = await fetch(`/deleteUser/${id}`,
       {
         method: 'DELETE',
@@ -428,7 +423,6 @@ export const updateCode = async (e)=>{
       window.location.assign('/admin')
     }
 
-    console.log(completed)
   } catch (error) {
     console.log(error)
   }

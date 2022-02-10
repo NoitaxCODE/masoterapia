@@ -200,7 +200,9 @@ td{
 }
 
 @media screen and (min-width: 1300px){
-
+  body{
+    background-image: var(--bg-color);
+  }
   $start: (1);
   $end: (2);
 
