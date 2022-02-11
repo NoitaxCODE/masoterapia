@@ -11885,6 +11885,7 @@ td {
   max-width: 180px;
   box-sizing: border-box;
   border-collapse: collapse;
+  overflow: auto;
   text-align: start;
   text-size-adjust: 100%;
   text-indent: 0;
