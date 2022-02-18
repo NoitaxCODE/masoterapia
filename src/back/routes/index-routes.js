@@ -246,7 +246,7 @@ router.get("/getCode", isAdmin, isAuthenticated, async (req, res, next) => {
   }
 });
 
-router.get("/calendar", isAdmin, isAuthenticated, async (req, res, next) => {
+router.get("/calendar", async (req, res, next) => {
   res.render("_calendar")
 });
 function isAuthenticated(req, res, next) {
@@ -255,6 +255,18 @@ function isAuthenticated(req, res, next) {
   }
   res.redirect("/");
 }
+router.get("/day/:dateSelected", (req,res,next)=>{
+  console.log(req.params.dateSelected)
+  res.render("_day")
+  next();
+})
+
+router.post("/day", (req, res, next) => {
+  // console.log(req.body);
+  const dateSelected = `${req.body.day},${req.body.month},${req.body.year}`
+  res.redirect(`/day/:${dateSelected}`)
+  next();
+})
 
 async function isAdmin(req, res, next) {
   const user = await User.findOne({ email: req.session.user_data.email });

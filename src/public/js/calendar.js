@@ -19,10 +19,16 @@ const completeCalendar = (daysOfMonth, year, month)=>{
   }
 
   let $firstDay = d.querySelector('.day-first'),
-    currentDate = new Date(year, month, 1);
-    console.log(currentDate.getDay())
+    currentDate = new Date(year, month, 1),
+    firstDayMove;
+
+    if (currentDate.getDay() === 0){
+      firstDayMove = 7
+    }else{
+      firstDayMove = currentDate.getDay()
+    };
     
-  $firstDay.style.gridColumnStart = `${currentDate.getDay()}`
+  $firstDay.style.gridColumnStart = `${firstDayMove}`;
 
 }
 
@@ -163,4 +169,29 @@ export const newMonth = (e)=>{
   completeCalendar(daysOfMonth, $year, $month)
   
 
+}
+
+export const editDay = async (e)=>{
+  let day,
+    month = d.querySelector('#currentMonth').getAttribute('data-day'),
+    year = d.querySelector('.year').textContent;
+
+  if (e.target.matches('.day-text')){
+    day = e.target.textContent
+  }else{
+    day = e.target.children.textContent
+  }
+  
+  console.log(day,month,year)
+  const dateComplete = {day,month,year}
+
+  console.log(dateComplete)
+
+  const res = await fetch(`/day`,
+  {
+    method: 'POST',
+    body: JSON.stringify(dateComplete),
+    headers: {'Content-Type': 'application/json'}
+  });
+  
 }
