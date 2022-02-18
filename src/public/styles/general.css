@@ -12321,3 +12321,89 @@ td.inputEdit {
     min-width: 1200px;
   }
 }
+:root {
+  --color-disabled: hsl(240, 8%, 40%);
+  --color-disabled-hover: hsla(240, 8%, 40%, .4);
+  --color-enabled-border: hsl(137, 100%, 29%);
+  --color-enabled-bg: hsl(136, 100%, 90%);
+  --color-busy-border: hsl(0, 100%, 39%);
+  --color-busy-bg: hsl(0, 100%, 90%);
+}
+
+.bg-calendar {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  box-shadow: 0 0 10px black;
+  border-radius: 1rem;
+}
+
+.year {
+  margin: 0.5rem 0;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.subtitle-calendar {
+  margin-left: 1rem;
+  margin-bottom: 2rem;
+}
+
+.header-year {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0.8rem;
+}
+
+.header-calendar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0.8rem 2rem 0.8rem;
+  min-height: 3.5rem;
+}
+.header-calendar h2 {
+  margin: 0;
+}
+.header-calendar-ctrl-btn {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-top: 2px solid var(--color-disabled);
+  border-right: 2px solid var(--color-disabled);
+  transform: rotate(-135deg);
+}
+.header-calendar-ctrl-btn:last-child {
+  transform: rotate(45deg);
+}
+
+ol {
+  width: 100%;
+  padding-left: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  justify-items: center;
+  align-items: center;
+  grid-row-gap: 2rem;
+}
+ol :hover {
+  cursor: pointer;
+  color: var(--color-disabled-hover);
+  border-color: var(--color-disabled-hover);
+}
+
+.day {
+  width: 2rem;
+  height: 2rem;
+  padding: 1rem;
+  font-size: 0.8rem;
+  border: 2px solid var(--color-disabled);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.day-text {
+  margin: 0;
+}

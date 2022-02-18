@@ -5,6 +5,8 @@ import { ocultarGenero } from "./views.js";
 import {rePass} from "./registro.js"
 import {loader} from "./loader.js"
 import {cargarPacientes, arrow, expandir, edit, saveAdmin, deleteUser, updateCode, getCode} from "./admin.js"
+import { changeMonth, changeYear, getDays, newMonth} from "./calendar.js";
+
 
 d.addEventListener('click', (e)=>{
 
@@ -35,10 +37,19 @@ d.addEventListener('click', (e)=>{
     loader(e)
     updateCode(e)
   }
+
+  if (e.target.matches('#ctrl-calendar-left') || e.target.matches('#ctrl-calendar-right')){
+    changeMonth(e);
+    newMonth(e);
+  } 
+  if (e.target.matches('#ctrl-year-left') || e.target.matches('#ctrl-year-right')) changeYear(e);
 })
 
 d.addEventListener('change',(e)=>{
   if (e.target.matches('.js-sex')) ocultarGenero(e)
 })
 
-d.addEventListener('DOMContentLoaded', ()=> getCode())
+d.addEventListener('DOMContentLoaded', (e)=> {
+  getCode()
+  getDays(e)
+})

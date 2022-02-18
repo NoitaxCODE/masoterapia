@@ -1,278 +1,272 @@
-.bg{
-  margin: 1rem;
-  display: grid;
+.bg {
+  margin       : 1rem;
+  display      : grid;
   justify-items: center;
-  grid-row-gap: 2rem;
-  &__2{
-    position: relative;
+  grid-row-gap : 2rem;
+  &__2 {
+    position        : relative;
     background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
-    padding: 1rem;
-    padding-bottom: 4rem;
-    max-width: 320px;
-    box-shadow: 0 0 3px black;
-    border-radius: 5px;
-    & label{
+    padding         : 1rem;
+    padding-bottom  : 4rem;
+    max-width       : 320px;
+    box-shadow      : 0 0 3px black;
+    border-radius   : 5px;
+    & label {
       width: 100%;
     }
-    & input{
+    & input {
       width: 100%;
     }
-    & select{
-      width: 100%;
+    & select {
+      width     : 100%;
       text-align: center;
     }
-    & textarea{
+    & textarea {
       width: 100%;
     }
-    &__radio{
-      display: flex;
+    &__radio {
+      display        : flex;
       justify-content: space-between;
-      &-container{
-        display: flex;
+      &-container {
+        display        : flex;
         justify-content: space-around;
-        position: relative;
-        margin-top: 1rem;
+        position       : relative;
+        margin-top     : 1rem;
       }
-      &-items{
-        display: flex;
-        align-items: center;
+      &-items {
+        display       : flex;
+        align-items   : center;
         flex-direction: column-reverse;
-        & select{
+        & select {
           width: 5.5rem;
         }
       }
-      &__row{
-        display: flex;
+      &__row {
+        display        : flex;
         justify-content: space-between;
-        width: 5rem;
+        width          : 5rem;
       }
     }
   }
 }
-.filaHeader{
+.filaHeader {
   width: 100%;
 }
-#title-main{
+#title-main {
   margin-top: 1rem;
 }
 
-.fecha-actual{
-  max-width: 320px;
-  display: flex;
+.fecha-actual {
+  max-width      : 320px;
+  display        : flex;
   justify-content: space-between;
 }
 
-.subtitle{
-  display: flex;
+.subtitle {
+  display        : flex;
   justify-content: space-between;
-  align-items: center;
-  max-width: 320px;
-  & h3{
+  align-items    : center;
+  max-width      : 320px;
+  & h3 {
     margin-bottom: 0;
   }
 }
-.header{
-  display: flex;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+.header {
+  display        : flex;
+  margin-top     : 2rem;
+  margin-bottom  : 1rem;
   justify-content: space-between;
-  width: 100%;
-  & h2{
-    font-size: 1rem;
-    margin-top: 0;
+  width          : 100%;
+  & h2 {
+    font-size    : 1rem;
+    margin-top   : 0;
     margin-bottom: 0;
-    max-width: 10rem;
+    max-width    : 10rem;
   }
-  & a{
+  & a {
     align-self: center;
   }
 }
 
-.fila{
+.fila {
   max-width: 320px;
   min-width: 300px;
-  & .mt-3 table{
+  & .mt-3 table {
     width: 100%;
-
   }
 }
 
-.loader{
-  width: 1.3rem;
+.loader {
+  width : 1.3rem;
   height: 1.3rem;
 }
-td{
-  max-width: 180px;
-  box-sizing: border-box;
-  border-collapse: collapse;
-  overflow: auto;
-  text-align: start;
+td {
+  max-width       : 180px;
+  box-sizing      : border-box;
+  border-collapse : collapse;
+  overflow        : auto;
+  text-align      : start;
   text-size-adjust: 100%;
-  text-indent: 0;
-  vertical-align: middle;
+  text-indent     : 0;
+  vertical-align  : middle;
 }
 
-.bg__2 .saveBtn{
-  width: 7rem;
-  margin: 1rem auto 0;
-  display: block;
+.bg__2 .saveBtn {
+  width   : 7rem;
+  margin  : 1rem auto 0;
+  display : block;
   position: absolute;
-  bottom: 1rem;
-  left: 0;
-  right: 0;
+  bottom  : 1rem;
+  left    : 0;
+  right   : 0;
 }
 
-.btnEdit{
+.btnEdit {
   width: 7rem;
 }
 
-.spinnerSave{
-  display: block;
-  margin: 16px auto 0;
-  width: 2rem;
-  height: 2rem;
+.spinnerSave {
+  display : block;
+  margin  : 16px auto 0;
+  width   : 2rem;
+  height  : 2rem;
   position: absolute;
-  bottom: 1rem;
-  left: 0;
-  right: 0;
+  bottom  : 1rem;
+  left    : 0;
+  right   : 0;
 }
-@media screen and (min-width: 768px){
-
-  .bg{
+@media screen and (min-width: 768px) {
+  .bg {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 10rem 13rem 13rem 22.5rem 22.5rem repeat(7,14rem);
+    grid-template-rows   : 10rem 13rem 13rem 22.5rem 22.5rem repeat(7, 14rem);
   }
-  .fila:first-child{
-    max-width: 768px;
-    grid-column: 1 /span 2;
-    grid-row: 1 / 2;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  .fila:first-child {
+    max-width      : 768px;
+    grid-column    : 1 / span 2;
+    grid-row       : 1 / 2;
+    display        : flex;
+    flex-direction : column;
+    width          : 100%;
     justify-content: center;
-    margin-left: 3rem;
+    margin-left    : 3rem;
   }
-  .fila:nth-child(2){
+  .fila:nth-child(2) {
     grid-row: 2 / 4;
   }
-  .fila:nth-child(3){
+  .fila:nth-child(3) {
     grid-row: 2 / 4;
   }
-  .fila:nth-child(4){
+  .fila:nth-child(4) {
     grid-row: 4 / 6;
-
   }
-  .fila:nth-child(5){
-    grid-row: 6 / 12;
+  .fila:nth-child(5) {
+    grid-row   : 6 / 12;
     grid-column: 1 / span 2;
-    max-width: 768px;
-    & .subtitle{
-      max-width: 706px
+    max-width  : 768px;
+    & .subtitle {
+      max-width: 706px;
     }
-    & .bg__2{
+    & .bg__2 {
       max-width: 706px;
     }
   }
-  .fila:last-child{
+  .fila:last-child {
     grid-row: 4 / 6;
-    & .bg__2{
+    & .bg__2 {
       height: 700px;
     }
-    & .saveBtn{
+    & .saveBtn {
       margin-top: auto;
     }
   }
-  .fecha-actual{
-    max-width: 706px;
+  .fecha-actual {
+    max-width      : 706px;
     justify-content: flex-start;
-    & input{
+    & input {
       margin-left: 6rem;
     }
   }
-  .header{
-    & .btn{
+  .header {
+    & .btn {
       margin-right: 3rem;
     }
-    & h2{
+    & h2 {
       font-size: 1.2rem;
     }
   }
 }
 
-@media screen and (min-width: 1300px){
-  body{
+@media screen and (min-width: 1300px) {
+  body {
     background-image: var(--bg-color);
   }
   $start: (1);
-  $end: (2);
+  $end  : (2);
 
-  body{
+  body {
     justify-content: center;
   }
-  main{
+  main {
     max-width: 1200px;
   }
-  .bg{
+  .bg {
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 10rem 13rem 13rem 22.5rem 22.5rem 22.5rem;
-    grid-column-gap: 2rem;
-
+    grid-template-rows   : 10rem 13rem 13rem 22.5rem 22.5rem 22.5rem;
+    grid-column-gap      : 2rem;
   }
-  .fila:first-child{
+  .fila:first-child {
     grid-column: 1 / span 3;
   }
-  .fila:last-child{
+  .fila:last-child {
     grid-row: 2 / 4;
-    & .bg__2{
+    & .bg__2 {
       height: 366px;
     }
   }
-  .fila:nth-child(4){
+  .fila:nth-child(4) {
     grid-column: 3 / 4;
-    grid-row: 4 / 11;
-    & .bg__2{
+    grid-row   : 4 / 11;
+    & .bg__2 {
       margin-top: 1.8rem;
-      height: 1232px;
+      height    : 1232px;
     }
   }
-  .fila:nth-child(5){
-    grid-row: 4 / 12;
+  .fila:nth-child(5) {
+    grid-row   : 4 / 12;
     grid-column: 1 / span 2;
 
-    & .subtitle{
-      max-width: 650px
-    }
-    & .bg__2{
+    & .subtitle {
       max-width: 650px;
-      display: grid;
+    }
+    & .bg__2 {
+      max-width            : 650px;
+      display              : grid;
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: repeat(12,1fr);
-      grid-column-gap: 3rem;
-      &__radio{
+      grid-template-rows   : repeat(12, 1fr);
+      grid-column-gap      : 3rem;
+      &__radio {
         grid-column: 1/2;
-        max-height: 3rem;
+        max-height : 3rem;
       }
       @for $i from 13 through 22 {
-        & label{
+        & label {
           grid-column: 2/3;
         }
       }
 
       @for $i from 13 through 22 {
-        &__radio:nth-child(#{$i}){
+        &__radio:nth-child(#{$i}) {
           grid-column: 2/3;
         }
       }
       @for $i from 13 through 22 {
-        &__row-#{$i}{
+        &__row-#{$i} {
           grid-row: #{$start} / #{$end};
 
           $start: $start + 1;
-          $end: $end + 1;
+          $end  : $end + 1;
         }
       }
-
-
     }
   }
 }

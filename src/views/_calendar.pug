@@ -1,0 +1,21 @@
+extends ./index.pug
+append main
+  h1#title-main Masoterapia & Resiliencia
+  h2.subtitle-calendar Asignar Turnos
+  .bg-calendar
+    .header-year
+      #ctrl-year-left.header-calendar-ctrl-btn
+      h2.year
+      #ctrl-year-right.header-calendar-ctrl-btn
+    .header-calendar
+      #ctrl-calendar-left.header-calendar-ctrl-btn
+      h2#currentMonth 
+      #ctrl-calendar-right.header-calendar-ctrl-btn 
+    ol#dayList
+      li.day-week Lu
+      li.day-week Ma
+      li.day-week Mi
+      li.day-week Ju
+      li.day-week Vi
+      li.day-week Sa
+      li.day-week Do

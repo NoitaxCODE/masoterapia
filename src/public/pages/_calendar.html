@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/general.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Cutive&amp;display=swap" rel="stylesheet">
+    <title>Masoterapia</title>
+  </head>
+  <body> 
+    <main>
+      <h1 id="title-main">Masoterapia & Resiliencia</h1>
+      <h2 class="subtitle-calendar">Asignar Turnos</h2>
+      <div class="bg-calendar">
+        <div class="header-year">
+          <div class="header-calendar-ctrl-btn" id="ctrl-year-left"></div>
+          <h2 class="year"></h2>
+          <div class="header-calendar-ctrl-btn" id="ctrl-year-right"></div>
+        </div>
+        <div class="header-calendar">
+          <div class="header-calendar-ctrl-btn" id="ctrl-calendar-left"></div>
+          <h2 id="currentMonth"> </h2>
+          <div class="header-calendar-ctrl-btn" id="ctrl-calendar-right"> </div>
+        </div>
+        <ol id="dayList">
+          <li class="day-week">Lu</li>
+          <li class="day-week">Ma</li>
+          <li class="day-week">Mi</li>
+          <li class="day-week">Ju</li>
+          <li class="day-week">Vi</li>
+          <li class="day-week">Sa</li>
+          <li class="day-week">Do</li>
+        </ol>
+      </div>
+    </main>
+    <script src="./js/general.js" type="module"></script>
+  </body>
+</html>

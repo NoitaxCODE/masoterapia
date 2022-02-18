@@ -1,20 +1,15 @@
 const userCtrl = {};
-const User = require('../models/user')
+const User = require("../models/user");
 
 userCtrl.renderUser = async (req, res, next) => {
-
-  try{
+  try {
     let email = req.session.user_data.email,
-      data = await User.findOne({email});
+      data = await User.findOne({ email });
 
-    res.render("_user-data", {data})
-
-  }catch(err){
-
-    console.log(err)
-
+    res.render("_user-data", { data });
+  } catch (err) {
+    console.log(err);
   }
-}
-
+};
 
 module.exports = userCtrl;
