@@ -12451,3 +12451,43 @@ ol :hover {
   border-radius: 1rem;
   width: auto;
 }
+.hour-selected label {
+  justify-self: center;
+}
+.hour-selected label:first-child {
+  margin-top: 1rem;
+}
+.hour-selected input[type=number] {
+  display: block;
+  width: 4rem;
+  margin: 1rem auto;
+}
+.hour-selected-setHourContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  padding-left: 1rem;
+  border-top: 1px solid var(--color-disabled);
+}
+
+.btn-turn, .btn-setHour {
+  margin-bottom: 1rem;
+  background-color: #d1f5d3;
+  box-shadow: 0 0 2px #313131;
+  border-radius: 0.5rem;
+  color: #1F8B24;
+}
+.btn-turn :hover, .btn-setHour :hover {
+  box-shadow: 0 0 5px black;
+}
+
+.btn-setHour {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  width: 4.5rem;
+  height: 2rem;
+  margin-bottom: 0;
+}

@@ -65,15 +65,19 @@
         <li class="day-selected-hour">23 HS</li>
       </ol>
       <div class="hour-selected">
-        <label>Cuantos turnos agregara este dia?
+        <label>Cuantos turnos desea agregar?
           <input type="number" name="">
         </label>
-        <label>Desde:
-          <input type="time" name="">
-        </label>
-        <label>Hasta:
-          <input type="time" name="">
-        </label>
+        <button class="btn btn-sm btn-turn">Agregar</button>
+        <div class="hour-selected-setHourContainer">
+          <label>Desde:
+            <input type="time" name="">
+          </label>
+          <label>Hasta:
+            <input type="time" name="">
+          </label>
+          <button class="btn btn-sm btn-setHour">Agendar</button>
+        </div>
       </div>
     </main>
     <script src="./js/general.js" type="module"></script>

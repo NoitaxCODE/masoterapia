@@ -48,9 +48,13 @@ append main
     li.day-selected-hour 22 HS
     li.day-selected-hour 23 HS
   .hour-selected
-    label Cuantos turnos agregara este dia?
+    label Cuantos turnos desea agregar?
       input(type="number", name="")
-    label Desde:
-      input(type="time", name="")
-    label Hasta:
-      input(type="time", name="")
+    button.btn.btn-sm.btn-turn Agregar
+
+    .hour-selected-setHourContainer
+      label Desde:
+        input(type="time", name="")
+      label Hasta:
+        input(type="time", name="")
+      button.btn.btn-sm.btn-setHour Agendar
