@@ -181,11 +181,8 @@ export const editDay = async (e)=>{
   }else{
     day = e.target.children.textContent
   }
-  
-  console.log(day,month,year)
-  const dateComplete = {day,month,year}
 
-  console.log(dateComplete)
+  // d.querySelector('main').insertAdjacentHTML('beforeend', )
 
   const res = await fetch(`/day`,
   {
