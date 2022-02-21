@@ -4,6 +4,7 @@ const passport = require("passport");
 const userData = require("../db/userInfo");
 const User = require("../models/user");
 const Code = require("../models/code");
+const CalendarTurn = require("../models/calendarModel");
 const { renderUser } = require("../controllers/form-controllers");
 const { findOne } = require("../models/user");
 const { updateAdmin } = require("../db/updateAdmin");
@@ -255,17 +256,32 @@ function isAuthenticated(req, res, next) {
   }
   res.redirect("/");
 }
-router.get("/day/:dateSelected", (req,res,next)=>{
-  console.log(req.params.dateSelected)
-  res.render("_day")
-  next();
-})
 
-router.post("/day", (req, res, next) => {
-  // console.log(req.body);
-  const dateSelected = `${req.body.day},${req.body.month},${req.body.year}`
-  res.redirect(`/day/:${dateSelected}`)
-  next();
+router.post("/day", async (req, res, next) => {
+  try{
+
+    const {year, month, day, hourFrom, hourTo} = req.body
+
+    const calendarTurn = new CalendarTurn({
+      year,
+      month,
+      day,
+      hourFrom,
+      hourTo
+    })
+
+    const turnSaved = await calendarTurn.save()
+
+    console.log(turnSaved)
+
+    if (turnSaved) res.json({ completed: "ok" });
+
+    
+  }catch(error){
+    console.log(error)
+  }finally{
+    next();
+  }
 })
 
 async function isAdmin(req, res, next) {

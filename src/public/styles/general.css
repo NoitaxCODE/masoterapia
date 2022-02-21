@@ -12404,6 +12404,10 @@ ol :hover {
   justify-content: center;
   align-items: center;
 }
+.day-link {
+  text-decoration: none;
+  color: var(--color-disabled);
+}
 .day-text {
   margin: 0;
 }
