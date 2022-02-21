@@ -283,8 +283,8 @@ export const addTurn = (e)=>{
 export const setHour = async (e)=>{
   
   let btnNumber = e.target.getAttribute('data-btnSetHour'),
-    hourFrom = d.querySelector(`[data-from-${btnNumber}]`).value,
-    hourTo = d.querySelector(`[data-to-${btnNumber}]`).value,
+    hourFrom = d.querySelector(`[data-from-${btnNumber}]`),
+    hourTo = d.querySelector(`[data-to-${btnNumber}]`),
     year = d.querySelector('.year').textContent,
     month = (Number(d.querySelector('#currentMonth').getAttribute('data-day')) + 1).toString(),
     day = d.querySelector('.day-selected-title').getAttribute('data-day'),
@@ -292,8 +292,8 @@ export const setHour = async (e)=>{
       year,
       month,
       day,
-      hourFrom,
-      hourTo
+      hourFrom: hourFrom.value,
+      hourTo: hourTo.value
     };
 
     const res = await fetch(`/day`,
@@ -303,5 +303,9 @@ export const setHour = async (e)=>{
         headers: {'Content-Type': 'application/json'}
       });
     const json = await res.json()
-    console.log(json)
+    
+    if (json.completed === 'dateTo is lower') {
+      hourFrom.classList.add('incorrectDate')
+      hourTo.classList.add('incorrectDate')
+    }
 }

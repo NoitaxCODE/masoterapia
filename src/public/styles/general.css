@@ -12328,6 +12328,7 @@ td.inputEdit {
   --color-enabled-bg: hsl(136, 100%, 90%);
   --color-busy-border: hsl(0, 100%, 39%);
   --color-busy-bg: hsl(0, 100%, 90%);
+  --color-incorrect: hsl(354, 70%, 54%);
 }
 
 .bg-calendar {
@@ -12494,4 +12495,8 @@ ol :hover {
   width: 4.5rem;
   height: 2rem;
   margin-bottom: 0;
+}
+
+.incorrectDate {
+  border: 2px solid var(--color-incorrect);
 }

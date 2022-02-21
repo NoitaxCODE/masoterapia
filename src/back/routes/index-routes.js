@@ -8,6 +8,7 @@ const CalendarTurn = require("../models/calendarModel");
 const { renderUser } = require("../controllers/form-controllers");
 const { findOne } = require("../models/user");
 const { updateAdmin } = require("../db/updateAdmin");
+const {saveTurn, validateTurn} = require("../db/turns");
 
 router.get("/", (req, res, next) => {
   res.render("_login");
@@ -257,31 +258,31 @@ function isAuthenticated(req, res, next) {
   res.redirect("/");
 }
 
-router.post("/day", async (req, res, next) => {
-  try{
+router.post("/day",  async (req, res, next) => {
 
-    const {year, month, day, hourFrom, hourTo} = req.body
 
-    const calendarTurn = new CalendarTurn({
-      year,
-      month,
-      day,
-      hourFrom,
-      hourTo
-    })
+  const validationFail = await validateTurn(req)
 
-    const turnSaved = await calendarTurn.save()
+  const savedSuccess = await saveTurn(req)
 
-    console.log(turnSaved)
+  console.log(validationFail)
+  console.log(savedSuccess)
 
-    if (turnSaved) res.json({ completed: "ok" });
+  if (validationFail){
 
-    
-  }catch(error){
-    console.log(error)
-  }finally{
-    next();
+    res.json(validationFail)
+
+  }else if(savedSuccess){
+
+    res.json(savedSuccess)
+
+  }else{
+
+    res.json({seCago: true})
+
   }
+
+  next();
 })
 
 async function isAdmin(req, res, next) {
