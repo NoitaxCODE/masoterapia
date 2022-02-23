@@ -288,13 +288,16 @@ export const setHour = async (e)=>{
     year = d.querySelector('.year').textContent,
     month = (Number(d.querySelector('#currentMonth').getAttribute('data-day')) + 1).toString(),
     day = d.querySelector('.day-selected-title').getAttribute('data-day'),
+    $alertExistent = d.querySelector(`[data-alert="${btnNumber}"]`),
     dayComplete = {
-      year,
-      month,
-      day,
-      hourFrom: hourFrom.value,
-      hourTo: hourTo.value
-    };
+      dateFrom: new Date(`${year}-${month}-${day} ${hourFrom.value}`),
+      dateTo: new Date(`${year}-${month}-${day} ${hourTo.value}`)
+    },
+    $alertIncorrect = d.createElement('p');
+
+    $alertIncorrect.setAttribute('class','alert alert-danger alert-hour');
+    $alertIncorrect.setAttribute('data-alert', btnNumber);
+    $alertIncorrect.textContent = 'El horario es incorrecto';
 
     const res = await fetch(`/day`,
       {
@@ -303,9 +306,12 @@ export const setHour = async (e)=>{
         headers: {'Content-Type': 'application/json'}
       });
     const json = await res.json()
-    
-    if (json.completed === 'dateTo is lower') {
+
+    console.log($alertExistent)
+
+    if (json.completed === 'dateTo is lower' && $alertExistent === null) {
       hourFrom.classList.add('incorrectDate')
       hourTo.classList.add('incorrectDate')
+      e.target.parentElement.after($alertIncorrect);
     }
 }

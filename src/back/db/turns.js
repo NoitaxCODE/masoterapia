@@ -18,12 +18,12 @@ const saveTurn = async (req)=>{
 const validateTurn = async (req)=>{
   try{
 
-  const {year, month, day, hourFrom, hourTo} = req.body,  
-    dateFrom = Date.parse(year+'-'+month+'-'+day+' '+hourFrom),
-    dateTo = Date.parse(year+'-'+month+'-'+day+' '+hourTo);
+    const {dateFrom, dateTo} = req.body,
+      dateFromMs = new Date(dateFrom).getTime(),
+      dateToMs = new Date(dateTo).getTime();
 
-  if (dateTo < dateFrom) console.log("Es menor");
-  if (dateTo < dateFrom) return {completed: "dateTo is lower"};
+  if (dateToMs < dateFromMs) console.log("Es menor");
+  if (dateToMs < dateFromMs) return {completed: "dateTo is lower"};
 
   }catch(error){
     console.log(error)

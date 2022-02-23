@@ -263,23 +263,14 @@ router.post("/day",  async (req, res, next) => {
 
   const validationFail = await validateTurn(req)
 
-  const savedSuccess = await saveTurn(req)
-
-  console.log(validationFail)
-  console.log(savedSuccess)
-
   if (validationFail){
-
+    
     res.json(validationFail)
+  } else{
 
-  }else if(savedSuccess){
+    const savedSuccess = await saveTurn(req)
 
-    res.json(savedSuccess)
-
-  }else{
-
-    res.json({seCago: true})
-
+    if(savedSuccess) res.json(savedSuccess)
   }
 
   next();
