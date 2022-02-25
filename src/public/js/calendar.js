@@ -313,5 +313,9 @@ export const setHour = async (e)=>{
       hourFrom.classList.add('incorrectDate')
       hourTo.classList.add('incorrectDate')
       e.target.parentElement.after($alertIncorrect);
+    }else if(json.completed === 'saved' && $alertExistent){
+      hourFrom.classList.remove('incorrectDate')
+      hourTo.classList.remove('incorrectDate')
+      $alertExistent.remove();
     }
 }
