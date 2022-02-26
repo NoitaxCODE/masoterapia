@@ -29,6 +29,11 @@ export const loader = (e)=>{
       $ico.classList.add('spinnerSave')
       e.target.replaceWith($ico)
     },10)
+  }else if(e.target.matches('.btn-setHour')){
+    setTimeout(()=>{
+      $ico.classList.add('spinnerCalendar')
+      e.target.parentElement.replaceWith($ico)
+    }, 10)
   }else{
 
     setTimeout(()=>{

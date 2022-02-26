@@ -181,8 +181,10 @@ export const openDay = (e)=>{
 
     if (e.target.matches('.day-text')){
       day = e.target.textContent
+    }else if(e.target.matches('.day')){
+      day = e.target.children[0].textContent
     }else{
-      day = e.target.children.textContent
+      day = e.target.children[0].children[0].textContent
     }
 
     if($hourSelected) $hourSelected.remove();
@@ -289,16 +291,35 @@ export const setHour = async (e)=>{
     month = (Number(d.querySelector('#currentMonth').getAttribute('data-day')) + 1).toString(),
     day = d.querySelector('.day-selected-title').getAttribute('data-day'),
     $alertExistent = d.querySelector(`[data-alert="${btnNumber}"]`),
-    dayComplete = {
-      dateFrom: new Date(`${year}-${month}-${day} ${hourFrom.value}`),
-      dateTo: new Date(`${year}-${month}-${day} ${hourTo.value}`)
-    },
-    $alertIncorrect = d.createElement('p');
+    $replaceSpinner = d.createElement('div'),
+    dayComplete;
 
-    $alertIncorrect.setAttribute('class','alert alert-danger alert-hour');
-    $alertIncorrect.setAttribute('data-alert', btnNumber);
-    $alertIncorrect.textContent = 'El horario es incorrecto';
+    $replaceSpinner.setAttribute('class','hour-selected-setHourContainer');
+    $replaceSpinner.innerHTML = 
+    `      
+    <label>Desde:<input class="desde-input" type="time" data-from-${btnNumber}/></label>
+    <label>Hasta:<input class="hasta-input"type="time" data-to-${btnNumber}/></label>
+    <button class="btn btn-sm btn-setHour" data-btnSetHour="${btnNumber}" >Agendar</button>
+    `
 
+    if (hourFrom.value === '' || hourTo.value === ''){
+      dayComplete = {
+        error: "bad hour"
+      }
+    }else if(hourFrom.value >= hourTo.value){
+      dayComplete = {
+        error: "dateTo is lower"
+      }
+    }else{
+      dayComplete = {
+        dateFrom: new Date(`${year}-${month}-${day} ${hourFrom.value}`),
+        dateTo: new Date(`${year}-${month}-${day} ${hourTo.value}`)
+      }
+    }
+
+    let $alertIncorrect = d.createElement('p'),
+      $contentAlert;
+    
     const res = await fetch(`/day`,
       {
         method: 'POST',
@@ -307,9 +328,21 @@ export const setHour = async (e)=>{
       });
     const json = await res.json()
 
-    console.log($alertExistent)
+    switch (json.completed) {
+      case 'bad hour':
+        $contentAlert = 'El horario no puede estar vacio'
+        break;
+      case 'dateTo is lower':
+        $contentAlert = 'El horario final no puede ser menor al inicial'
+        break;
+    } 
+    $alertIncorrect.setAttribute('class','alert alert-danger alert-hour');
+    $alertIncorrect.setAttribute('data-alert', btnNumber);
+    $alertIncorrect.textContent = `${$contentAlert}`;
 
-    if (json.completed === 'dateTo is lower' && $alertExistent === null) {
+//    if (d.querySelector('.spinnerCalendar')) d.querySelector('.spinnerCalendar').replaceWith($replaceSpinner)
+
+    if (json.error && $alertExistent === null) {
       hourFrom.classList.add('incorrectDate')
       hourTo.classList.add('incorrectDate')
       e.target.parentElement.after($alertIncorrect);
@@ -317,5 +350,7 @@ export const setHour = async (e)=>{
       hourFrom.classList.remove('incorrectDate')
       hourTo.classList.remove('incorrectDate')
       $alertExistent.remove();
+    }else if(json.error && $alertExistent){
+      d.querySelector(`[data-alert="${btnNumber}"]`).textContent = `${$contentAlert}`;
     }
 }

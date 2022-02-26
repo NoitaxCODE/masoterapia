@@ -44,13 +44,16 @@ d.addEventListener('click', (e)=>{
   } 
   if (e.target.matches('#ctrl-year-left') || e.target.matches('#ctrl-year-right')) changeYear(e);
 
-  if (e.target.matches('.day') || e.target.matches('.day-text')) openDay(e);
+  if (e.target.matches('.day') || e.target.matches('.day-text') || e.target.matches('.day-link')) openDay(e);
 
   if (e.target.matches('.day-selected-edit')) editDay(e);
 
   if (e.target.matches('.btn-turn')) addTurn(e);
 
-  if (e.target.matches('.btn-setHour')) setHour(e);
+  if (e.target.matches('.btn-setHour')) {
+    loader(e);
+    setHour(e);
+  }
 })
 
 d.addEventListener('change',(e)=>{
