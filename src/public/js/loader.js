@@ -31,6 +31,8 @@ export const loader = (e)=>{
     },10)
   }else if(e.target.matches('.btn-setHour')){
     setTimeout(()=>{
+      let $btnNumber = e.target.getAttribute('data-btnsethour');
+      $ico.setAttribute(`data-spinner`,`${$btnNumber}`)
       $ico.classList.add('spinnerCalendar')
       e.target.parentElement.replaceWith($ico)
     }, 10)

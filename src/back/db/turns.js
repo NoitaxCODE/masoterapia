@@ -19,15 +19,8 @@ const saveTurn = async (req)=>{
 const validateTurn = async (req)=>{
   try{
 
-    if (req.body.error) return {completed: "bad hour", error: true}
-
-    const {dateFrom, dateTo} = req.body;
-    console.log(dateFrom, dateTo)
-    const dateFromMs = new Date(dateFrom).getTime(),
-      dateToMs = new Date(dateTo).getTime();
-
-
-    if (dateToMs < dateFromMs) return {completed: "dateTo is lower", error: true};
+    if (req.body.error === 'bad hour') return {completed: "bad hour", error: true}
+    if (req.body.error === 'dateTo is lower') return {completed: "dateTo is lower", error: true};
 
   }catch(error){
     console.log(error)
