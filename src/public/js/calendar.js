@@ -292,15 +292,27 @@ export const setHour = async (e)=>{
     day = d.querySelector('.day-selected-title').getAttribute('data-day'),
     $alertExistent = d.querySelector(`[data-alert="${btnNumber}"]`),
     $replaceSpinner = d.createElement('div'),
+    $replaceSaved = d.createElement('div'),
     dayComplete;
 
     $replaceSpinner.setAttribute('class','hour-selected-setHourContainer');
+    $replaceSpinner.setAttribute('data-containerHour',`${btnNumber}`);
     $replaceSpinner.innerHTML = 
     `      
     <label>Desde:<input class="desde-input" type="time" data-from-${btnNumber}/></label>
     <label>Hasta:<input class="hasta-input"type="time" data-to-${btnNumber}/></label>
     <button class="btn btn-sm btn-setHour" data-btnSetHour="${btnNumber}" >Agendar</button>
     `
+
+    $replaceSaved.classList.add('container-succes')
+    $replaceSaved.innerHTML = 
+    `
+      <div class="container-succes-circle">
+        <div class="container-succes-circle-check"></div>
+      </div>
+      <p>Agendado Correctamente</p>
+    `
+
 
     if (hourFrom.value === '' || hourTo.value === ''){
       dayComplete = {
@@ -326,9 +338,15 @@ export const setHour = async (e)=>{
     const json = await res.json()
     
     setTimeout(() => {
-      if (json) d.querySelector(`[data-spinner='${btnNumber}']`).replaceWith($replaceSpinner)
-    
-    
+
+      if (json.completed === 'saved'){
+
+        d.querySelector(`[data-spinner='${btnNumber}']`).replaceWith($replaceSaved)
+        
+      }else if(json){
+
+        d.querySelector(`[data-spinner='${btnNumber}']`).replaceWith($replaceSpinner)
+      } 
     
       let $alertIncorrect = d.createElement('p'),
       $contentAlert;
@@ -355,15 +373,12 @@ export const setHour = async (e)=>{
       }else if(json.error && $alertExistent && json.completed === 'bad hour'){
         hourFrom.classList.add('incorrectDate')
         hourTo.classList.add('incorrectDate')
-        console.log("entro en el else if 1")
         d.querySelector(`[data-alert="${btnNumber}"]`).textContent = `El horario no puede estar vacio`;
       }else if(json.error && $alertExistent && json.completed === 'dateTo is lower'){
         hourFrom.classList.add('incorrectDate')
         hourTo.classList.add('incorrectDate')
-        console.log("entro en el else if 2")
         d.querySelector(`[data-alert="${btnNumber}"]`).textContent = `El horario final no puede ser menor al inicial`;
       }else if(json.completed === 'saved' && $alertExistent){
-        console.log("entro en el else if 3")
         hourFrom.classList.remove('incorrectDate')
         hourTo.classList.remove('incorrectDate')
         $alertExistent.remove();

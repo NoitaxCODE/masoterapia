@@ -12329,12 +12329,16 @@ td.inputEdit {
   --color-busy-border: hsl(0, 100%, 39%);
   --color-busy-bg: hsl(0, 100%, 90%);
   --color-incorrect: hsl(354, 70%, 54%);
+  --color-succes-border: hsl(123, 63%, 45%);
+  --color-succes-bg: hsl(123, 63%, 86%);
+  --color-succes-bg-light: hsl(123deg 63% 96%);
+  --shadow-standard: 0 0 .3rem #6c757d;
 }
 
 .bg-calendar {
   margin: 0.5rem;
   padding: 0.5rem;
-  box-shadow: 0 0 10px black;
+  box-shadow: var(--shadow-standard);
   border-radius: 1rem;
 }
 
@@ -12420,7 +12424,7 @@ ol :hover {
   grid-row-gap: 0;
   margin: 2rem 0.5rem;
   padding: 0.5rem 0;
-  box-shadow: 0 0 10px black;
+  box-shadow: var(--shadow-standard);
   border-radius: 1rem;
   width: auto;
 }
@@ -12452,7 +12456,7 @@ ol :hover {
   grid-row-gap: 0;
   margin: 2rem 0.5rem;
   padding: 0.5rem 0;
-  box-shadow: 0 0 10px black;
+  box-shadow: var(--shadow-standard);
   border-radius: 1rem;
   width: auto;
   position: relative;
@@ -12482,7 +12486,7 @@ ol :hover {
 .btn-turn, .btn-setHour {
   margin-bottom: 1rem;
   background-color: #d1f5d3;
-  box-shadow: 0 0 2px #313131;
+  box-shadow: var(--shadow-standard);
   border-radius: 0.5rem;
   color: #1F8B24;
 }
@@ -12510,4 +12514,40 @@ ol :hover {
   bottom: 1rem;
   left: 0;
   right: 0;
+}
+
+.container-succes {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-standard);
+  width: 18rem;
+  height: 4rem;
+  margin-bottom: 1rem;
+  background-color: var(--color-succes-bg-light);
+}
+.container-succes-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.3rem;
+  width: 2.3rem;
+  margin-left: 0.4rem;
+  background-color: var(--color-succes-bg);
+  border: 2px solid var(--color-succes-border);
+  border-radius: 50%;
+}
+.container-succes-circle-check {
+  width: 0.9rem;
+  height: 0.5rem;
+  border-right: 3px solid var(--color-succes-border);
+  border-top: 3px solid var(--color-succes-border);
+  transform: rotate(130deg);
+  margin-bottom: 0.17rem;
+}
+.container-succes p {
+  margin-bottom: 0;
+  margin-right: 0.4rem;
+  color: #1F8B24;
 }

@@ -1,17 +1,21 @@
 :root{
-  --color-disabled      : hsl(240, 8%, 40%);
-  --color-disabled-hover: hsla(240, 8%, 40%, .4);
-  --color-enabled-border: hsl(137, 100%, 29%);
-  --color-enabled-bg    : hsl(136, 100%, 90%);
-  --color-busy-border   : hsl(0, 100%, 39%);
-  --color-busy-bg       : hsl(0, 100%, 90%);
-  --color-incorrect     : hsl(354, 70%, 54%);
+  --color-disabled       : hsl(240, 8%, 40%);
+  --color-disabled-hover : hsla(240, 8%, 40%, .4);
+  --color-enabled-border : hsl(137, 100%, 29%);
+  --color-enabled-bg     : hsl(136, 100%, 90%);
+  --color-busy-border    : hsl(0, 100%, 39%);
+  --color-busy-bg        : hsl(0, 100%, 90%);
+  --color-incorrect      : hsl(354, 70%, 54%);
+  --color-succes-border  : hsl(123, 63%, 45%);
+  --color-succes-bg      : hsl(123, 63%, 86%);
+  --color-succes-bg-light: hsl(123deg 63% 96%);
+  --shadow-standard      : 0 0 .3rem #6c757d;
 }
 
 .bg-calendar{
   margin       : .5rem;
   padding      : .5rem;
-  box-shadow   : 0 0 10px black;
+  box-shadow   : var(--shadow-standard);
   border-radius: 1rem;
 }
 
@@ -96,7 +100,7 @@ ol{
     grid-row-gap         : 0;
     margin               : 2rem .5rem;
     padding              : .5rem 0;
-    box-shadow           : 0 0 10px black;
+    box-shadow           : var(--shadow-standard);
     border-radius        : 1rem;
     width                : auto;
     &-header{
@@ -129,7 +133,7 @@ ol{
   grid-row-gap         : 0;
   margin               : 2rem .5rem;
   padding              : .5rem 0;
-  box-shadow           : 0 0 10px black;
+  box-shadow           : var(--shadow-standard);
   border-radius        : 1rem;
   width                : auto;
   position             : relative;
@@ -141,8 +145,8 @@ ol{
   }
   & input[type="number"]{
     display: block;
-    width: 4rem;
-    margin: 1rem auto;
+    width  : 4rem;
+    margin : 1rem auto;
   }
   &-setHourContainer{
     position: relative;
@@ -159,7 +163,7 @@ ol{
 .btn-turn, .btn-setHour{
   margin-bottom: 1rem;
   background-color: hsl(123, 64%, 89%);
-  box-shadow      : 0 0 2px rgb(49, 49, 49);
+  box-shadow      : var(--shadow-standard);
   border-radius   : .5rem;
   color           : #1F8B24;
   & :hover{
@@ -184,8 +188,43 @@ ol{
   margin  : 2rem auto;
   width   : 2rem;
   height  : 2rem;
-  // position: relative;
   bottom  : 1rem;
   left    : 0;
   right   : 0;
+}
+
+.container-succes{
+  display         : flex;
+  align-items     : center;
+  justify-content : space-around;
+  border-radius   : 1rem;
+  box-shadow      : var(--shadow-standard);
+  width           : 18rem;
+  height          : 4rem;
+  margin-bottom   : 1rem;
+  background-color: var(--color-succes-bg-light);
+  &-circle{
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    height          : 2.3rem;
+    width           : 2.3rem;
+    margin-left     : .4rem;
+    background-color: var(--color-succes-bg);
+    border          : 2px solid var(--color-succes-border);
+    border-radius   : 50%;
+    &-check{
+      width        : .9rem;
+      height       : .5rem;
+      border-right : 3px solid var(--color-succes-border);
+      border-top   : 3px solid var(--color-succes-border);
+      transform    : rotate(130deg);
+      margin-bottom: .17rem;
+    }
+  }
+  & p{
+    margin-bottom: 0;
+    margin-right : .4rem;
+    color        : #1F8B24;
+  }
 }
