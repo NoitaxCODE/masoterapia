@@ -11673,9 +11673,10 @@ textarea.form-control-lg {
 
 body {
   background-image: var(--bg-color-alt);
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
   padding: 0.5rem;
+  margin-bottom: 0.5rem;
   font-family: "open sans";
 }
 
@@ -12427,6 +12428,7 @@ ol :hover {
   box-shadow: var(--shadow-standard);
   border-radius: 1rem;
   width: auto;
+  position: relative;
 }
 .day-selected-header {
   display: flex;

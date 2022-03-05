@@ -8,10 +8,12 @@
 
 body{
   background-image: var(--bg-color-alt);
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
   padding: .5rem;
+  margin-bottom: .5rem;
   font-family: 'open sans';
+
 }
 
 main{

@@ -8,7 +8,7 @@ const CalendarTurn = require("../models/calendarModel");
 const { renderUser } = require("../controllers/form-controllers");
 const { findOne } = require("../models/user");
 const { updateAdmin } = require("../db/updateAdmin");
-const {saveTurn, validateTurn} = require("../db/turns");
+const {saveTurn, validateTurn, dateFromDB} = require("../db/turns");
 
 router.get("/", (req, res, next) => {
   res.render("_login");
@@ -273,6 +273,13 @@ router.post("/day",  async (req, res, next) => {
 
   res.json(response)
 
+  next();
+})
+
+router.post("/importDay", async (req, res, next)=>{
+  let response = dateFromDB(req)
+
+  res.json(response)
   next();
 })
 

@@ -28,4 +28,19 @@ const validateTurn = async (req)=>{
 
 }
 
-module.exports = {saveTurn, validateTurn}
+const dateFromDB = async (req)=>{
+  try {
+    const {year, month, day} = req.body,
+     date = new Date(`${year}, ${month}, ${day}`)
+
+    const dateFinded = await CalendarTurn.find({date})
+
+    console.log(dateFinded)
+
+
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+module.exports = {saveTurn, validateTurn, dateFromDB}

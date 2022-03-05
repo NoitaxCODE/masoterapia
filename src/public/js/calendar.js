@@ -324,6 +324,7 @@ export const setHour = async (e)=>{
       }
     }else{
       dayComplete = {
+        date: new Date(`${year}-${month}-${day}`),
         dateFrom: new Date(`${year}-${month}-${day} ${hourFrom.value}`),
         dateTo: new Date(`${year}-${month}-${day} ${hourTo.value}`)
       }
@@ -384,4 +385,41 @@ export const setHour = async (e)=>{
         $alertExistent.remove();
       }
     }, 20);
+}
+
+export const importDay = async (e)=>{
+  try {
+
+    let year = d.querySelector('.year').textContent,
+      month = (parseInt(d.querySelector('#currentMonth').getAttribute('data-day')) + 1).toString(),
+      daySelected = {
+        year,
+        month
+      },
+      target = e.target;
+      
+    if (e.target.matches('.day-text')){
+
+      daySelected.day = target.textContent
+
+    }else if(e.target.matches('.day')){
+      
+      daySelected.day = target.children[0].textContent
+
+    }else if(e.target.matches('.day-link')){
+
+      daySelected.day = target.children[0].children[0].textContent
+    }
+
+
+    const res = await fetch(`/importDay`,
+    {
+      method: 'POST',
+      body: JSON.stringify(daySelected),
+      headers: {'Content-Type': 'application/json'}
+    });
+
+  } catch (error) {
+    console.error(error)
+  }
 }

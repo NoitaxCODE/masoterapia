@@ -5,7 +5,7 @@ import { ocultarGenero } from "./views.js";
 import {rePass} from "./registro.js"
 import {loader} from "./loader.js"
 import {cargarPacientes, arrow, expandir, edit, saveAdmin, deleteUser, updateCode, getCode} from "./admin.js"
-import { changeMonth, changeYear, openDay, getDays, newMonth, editDay, addTurn, setHour} from "./calendar.js";
+import { changeMonth, changeYear, openDay, getDays, newMonth, editDay, addTurn, setHour, importDay} from "./calendar.js";
 
 
 d.addEventListener('click', (e)=>{
@@ -44,7 +44,10 @@ d.addEventListener('click', (e)=>{
   } 
   if (e.target.matches('#ctrl-year-left') || e.target.matches('#ctrl-year-right')) changeYear(e);
 
-  if (e.target.matches('.day') || e.target.matches('.day-text') || e.target.matches('.day-link')) openDay(e);
+  if (e.target.matches('.day') || e.target.matches('.day-text') || e.target.matches('.day-link')) {
+    openDay(e);
+    importDay(e);
+  }
 
   if (e.target.matches('.day-selected-edit')) editDay(e);
 
