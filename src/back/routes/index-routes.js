@@ -277,9 +277,11 @@ router.post("/day",  async (req, res, next) => {
 })
 
 router.post("/importDay", async (req, res, next)=>{
-  let response = dateFromDB(req)
+
+  let response = await dateFromDB(req)
 
   res.json(response)
+
   next();
 })
 

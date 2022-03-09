@@ -12333,6 +12333,7 @@ td.inputEdit {
   --color-succes-border: hsl(123, 63%, 45%);
   --color-succes-bg: hsl(123, 63%, 86%);
   --color-succes-bg-light: hsl(123deg 63% 96%);
+  --color-succes-bg-transparent: hsla(123, 63%, 86%, .8);
   --shadow-standard: 0 0 .3rem #6c757d;
 }
 
@@ -12448,6 +12449,7 @@ ol :hover {
   height: 3rem;
   text-align: center;
   font-size: 0.9rem;
+  position: relative;
 }
 
 .hour-selected {
@@ -12552,4 +12554,28 @@ ol :hover {
   margin-bottom: 0;
   margin-right: 0.4rem;
   color: #1F8B24;
+}
+
+.turn-available {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 6rem;
+  height: 4rem;
+  background-color: var(--color-succes-bg-transparent);
+  box-shadow: var(--shadow-standard);
+  border-left: 4px solid var(--color-succes-border);
+  position: absolute;
+  top: 0rem;
+  right: 0.5rem;
+  padding: 0.5rem;
+  overflow: scroll;
+}
+
+.turn-available p {
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0;
 }

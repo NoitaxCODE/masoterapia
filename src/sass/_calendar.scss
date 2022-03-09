@@ -1,15 +1,16 @@
 :root{
-  --color-disabled       : hsl(240, 8%, 40%);
-  --color-disabled-hover : hsla(240, 8%, 40%, .4);
-  --color-enabled-border : hsl(137, 100%, 29%);
-  --color-enabled-bg     : hsl(136, 100%, 90%);
-  --color-busy-border    : hsl(0, 100%, 39%);
-  --color-busy-bg        : hsl(0, 100%, 90%);
-  --color-incorrect      : hsl(354, 70%, 54%);
-  --color-succes-border  : hsl(123, 63%, 45%);
-  --color-succes-bg      : hsl(123, 63%, 86%);
-  --color-succes-bg-light: hsl(123deg 63% 96%);
-  --shadow-standard      : 0 0 .3rem #6c757d;
+  --color-disabled             : hsl(240, 8%, 40%);
+  --color-disabled-hover       : hsla(240, 8%, 40%, .4);
+  --color-enabled-border       : hsl(137, 100%, 29%);
+  --color-enabled-bg           : hsl(136, 100%, 90%);
+  --color-busy-border          : hsl(0, 100%, 39%);
+  --color-busy-bg              : hsl(0, 100%, 90%);
+  --color-incorrect            : hsl(354, 70%, 54%);
+  --color-succes-border        : hsl(123, 63%, 45%);
+  --color-succes-bg            : hsl(123, 63%, 86%);
+  --color-succes-bg-light      : hsl(123deg 63% 96%);
+  --color-succes-bg-transparent: hsla(123, 63%, 86%, .8);
+  --shadow-standard            : 0 0 .3rem #6c757d;
 }
 
 .bg-calendar{
@@ -122,6 +123,7 @@ ol{
       height    : 3rem;
       text-align: center;
       font-size : .9rem;
+      position  : relative;
     }
   }
 }
@@ -228,4 +230,28 @@ ol{
     margin-right : .4rem;
     color        : #1F8B24;
   }
+}
+
+.turn-available{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 6rem;
+  height: 4rem;
+  background-color: var(--color-succes-bg-transparent);
+  box-shadow: var(--shadow-standard);
+  border-left: 4px solid var(--color-succes-border);
+  position: absolute;
+  top: 0rem;
+  right: .5rem;
+  padding: .5rem;
+  overflow: scroll;
+}
+
+.turn-available p{
+  font-size: .8rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0;
 }

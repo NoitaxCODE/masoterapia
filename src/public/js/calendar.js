@@ -396,17 +396,19 @@ export const importDay = async (e)=>{
         year,
         month
       },
-      target = e.target;
+      target = e.target,
+      hoursArray = [],
+      $hours = d.querySelectorAll('.day-selected-hour');
       
-    if (e.target.matches('.day-text')){
+    if (target.matches('.day-text')){
 
       daySelected.day = target.textContent
 
-    }else if(e.target.matches('.day')){
+    }else if(target.matches('.day')){
       
       daySelected.day = target.children[0].textContent
 
-    }else if(e.target.matches('.day-link')){
+    }else if(target.matches('.day-link')){
 
       daySelected.day = target.children[0].children[0].textContent
     }
@@ -419,6 +421,35 @@ export const importDay = async (e)=>{
       headers: {'Content-Type': 'application/json'}
     });
 
+    const json =  await res.json()
+
+
+    if (json.completed === 'turn not found') return
+
+    json.forEach(el =>{
+      let hoursFrom = new Date(el.dateFrom).getHours(),
+        minutesFrom = new Date(el.dateFrom).getMinutes(),
+        hoursTo = new Date(el.dateTo).getHours(),
+        minutesTo = new Date(el.dateTo).getMinutes(),
+        dateFrom = new Date(el.dateFrom).getTime(),
+        dateTo = new Date(el.dateTo).getTime(),
+        dateDif = ((dateTo-dateFrom)/1000)/60;
+      
+      if (hoursFrom < 10) hoursFrom = `0${hoursFrom}`;
+      if (minutesFrom < 10) minutesFrom = `0${minutesFrom}`;
+      if (hoursTo < 10) hoursTo = `0${hoursTo}`;
+      if (minutesTo < 10) minutesTo = `0${minutesTo}`;
+
+      $hours.forEach(el =>{
+
+        if (el.textContent.slice(0,-3) == hoursFrom) el.insertAdjacentHTML('beforeend', 
+          `<div class="turn-available" style="height:${dateDif*48/60}px; top:${parseInt(minutesFrom)*48/60}px">
+            <p>De: ${hoursFrom}:${minutesFrom}hs</p>
+            <p>A: ${hoursTo}:${minutesTo}hs</p>
+          </div>`)
+
+      })
+    })
   } catch (error) {
     console.error(error)
   }
