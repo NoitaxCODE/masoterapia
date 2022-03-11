@@ -22,6 +22,25 @@ const validateTurn = async (req)=>{
     if (req.body.error === 'bad hour') return {completed: "bad hour", error: true}
     if (req.body.error === 'dateTo is lower') return {completed: "dateTo is lower", error: true};
 
+    const {date, dateFrom, dateTo} = req.body,
+      dateSend = new Date(`${date}`),
+      dateFinded = await CalendarTurn.find({date:dateSend}),
+      timeFrom = new Date(dateFrom).getTime(),
+      timeTo = new Date(dateTo).getTime();
+    let turnBusy = false;
+
+      dateFinded.map(el => {
+        let timeFromDB = el.dateFrom.getTime(),
+          timeToDB = el.dateTo.getTime();
+        
+          if (timeFrom>timeFromDB && timeFrom<timeToDB) {
+            console.log("Entro")
+            turnBusy = true
+          }
+      });
+
+      if (turnBusy) return {completed: "turn is busy", error: true}
+
   }catch(error){
     console.log(error)
   }

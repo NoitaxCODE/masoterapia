@@ -338,6 +338,7 @@ export const setHour = async (e)=>{
       });
     const json = await res.json()
     
+    console.log(json)
     setTimeout(() => {
 
       if (json.completed === 'saved'){
@@ -359,6 +360,9 @@ export const setHour = async (e)=>{
         case 'dateTo is lower':
           $contentAlert = 'El horario final no puede ser menor al inicial'
           break;
+        case 'turn is busy':
+          $contentAlert = 'El horario esta ocupado por otro turno'
+          break;
       } 
       $alertIncorrect.setAttribute('class','alert alert-danger alert-hour');
       $alertIncorrect.setAttribute('data-alert', btnNumber);
@@ -379,9 +383,13 @@ export const setHour = async (e)=>{
         hourFrom.classList.add('incorrectDate')
         hourTo.classList.add('incorrectDate')
         d.querySelector(`[data-alert="${btnNumber}"]`).textContent = `El horario final no puede ser menor al inicial`;
+      }else if(json.error && $alertExistent && json.completed === 'turn is busy'){
+        hourFrom.classList.add('incorrectDate')
+        hourTo.classList.add('incorrectDate')
+        d.querySelector(`[data-alert="${btnNumber}"]`).textContent = `El horario esta ocupado por otro turno`;
       }else if(json.completed === 'saved' && $alertExistent){
-        hourFrom.classList.remove('incorrectDate')
-        hourTo.classList.remove('incorrectDate')
+        // hourFrom.classList.remove('incorrectDate')
+        // hourTo.classList.remove('incorrectDate')
         $alertExistent.remove();
       }
     }, 20);
