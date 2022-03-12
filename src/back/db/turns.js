@@ -33,10 +33,8 @@ const validateTurn = async (req)=>{
         let timeFromDB = el.dateFrom.getTime(),
           timeToDB = el.dateTo.getTime();
         
-          if (timeFrom>timeFromDB && timeFrom<timeToDB) {
-            console.log("Entro")
-            turnBusy = true
-          }
+      if (timeFrom>timeFromDB && timeFrom<timeToDB || timeTo>timeFromDB && timeTo<timeToDB) turnBusy = true;
+          
       });
 
       if (turnBusy) return {completed: "turn is busy", error: true}

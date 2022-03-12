@@ -388,8 +388,6 @@ export const setHour = async (e)=>{
         hourTo.classList.add('incorrectDate')
         d.querySelector(`[data-alert="${btnNumber}"]`).textContent = `El horario esta ocupado por otro turno`;
       }else if(json.completed === 'saved' && $alertExistent){
-        // hourFrom.classList.remove('incorrectDate')
-        // hourTo.classList.remove('incorrectDate')
         $alertExistent.remove();
       }
     }, 20);

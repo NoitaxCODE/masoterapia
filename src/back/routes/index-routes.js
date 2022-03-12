@@ -260,17 +260,11 @@ function isAuthenticated(req, res, next) {
 
 router.post("/day",  async (req, res, next) => {
 
-
   let validationFail = await validateTurn(req),
-    savedSuccess = await saveTurn(req),
     response;
 
-  if (validationFail){
-    response = validationFail
-  }else if(savedSuccess){
-    response = savedSuccess
-  }
-
+  (validationFail) ? response = validationFail : response = await saveTurn(req);
+  
   res.json(response)
 
   next();
