@@ -12333,8 +12333,9 @@ td.inputEdit {
   --color-succes-border: hsl(123, 63%, 45%);
   --color-succes-bg: hsl(123, 63%, 86%);
   --color-succes-bg-light: hsl(123deg 63% 96%);
-  --color-succes-bg-transparent: hsla(123, 63%, 86%, .8);
+  --color-succes-bg-transparent: hsl(123, 63%, 86%);
   --shadow-standard: 0 0 .3rem #6c757d;
+  --z-top: 10;
 }
 
 .bg-calendar {
@@ -12570,12 +12571,32 @@ ol :hover {
   top: 0rem;
   right: 0.5rem;
   padding: 0.5rem;
-  overflow: scroll;
+  z-index: var(--z-top);
 }
-
 .turn-available p {
   font-size: 0.8rem;
   font-weight: bold;
   text-align: center;
   margin-bottom: 0;
+  z-index: var(--z-top);
+}
+.turn-available-container {
+  display: flex;
+  flex-direction: column;
+}
+.turn-available-title {
+  color: white;
+  background-color: var(--color-enabled-border);
+  position: absolute;
+  right: 0.5rem;
+  width: 5.7rem;
+  max-width: 5.8rem;
+  padding: 0.2rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  transform: translateY(0);
+  transition: transform 0.5s;
+}
+.turn-available-title_showHide {
+  transform: translateY(-1.9rem);
 }

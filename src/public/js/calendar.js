@@ -449,14 +449,24 @@ export const importDay = async (e)=>{
       $hours.forEach(el =>{
 
         if (el.textContent.slice(0,-3) == hoursFrom) el.insertAdjacentHTML('beforeend', 
-          `<div class="turn-available" style="height:${dateDif*48/60}px; top:${parseInt(minutesFrom)*48/60}px">
-            <p>De: ${hoursFrom}:${minutesFrom}hs</p>
-            <p>A: ${hoursTo}:${minutesTo}hs</p>
-          </div>`)
+          `
+          <div class="turn-available-container">
+            <p class="turn-available-title">TURNO</p>
+            <div class="turn-available" style="height:${dateDif*48/60}px; top:${parseInt(minutesFrom)*48/60}px">
+              <p>De: ${hoursFrom}:${minutesFrom}hs</p>
+              <p>A: ${hoursTo}:${minutesTo}hs</p>
+            </div>
+          </div>`
+        )
 
       })
     })
   } catch (error) {
     console.error(error)
   }
+}
+
+export const showStylesHover = (e)=>{
+  console.log(e)
+  e.target.previousElementSibling.classList.toggle('turn-available-title_showHide')
 }

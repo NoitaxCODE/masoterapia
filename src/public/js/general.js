@@ -5,7 +5,7 @@ import { ocultarGenero } from "./views.js";
 import {rePass} from "./registro.js"
 import {loader} from "./loader.js"
 import {cargarPacientes, arrow, expandir, edit, saveAdmin, deleteUser, updateCode, getCode} from "./admin.js"
-import { changeMonth, changeYear, openDay, getDays, newMonth, editDay, addTurn, setHour, importDay} from "./calendar.js";
+import { changeMonth, changeYear, openDay, getDays, newMonth, editDay, addTurn, setHour, importDay, showStylesHover} from "./calendar.js";
 
 
 d.addEventListener('click', (e)=>{
@@ -60,10 +60,14 @@ d.addEventListener('click', (e)=>{
 })
 
 d.addEventListener('change',(e)=>{
-  if (e.target.matches('.js-sex')) ocultarGenero(e)
+  if (e.target.matches('.js-sex')) ocultarGenero(e);
 })
 
 d.addEventListener('DOMContentLoaded', (e)=> {
   getCode()
   getDays(e)
+})
+
+d.addEventListener('mouseover', (e)=>{
+  if (e.target.matches('.turn-available')) showStylesHover(e);
 })
