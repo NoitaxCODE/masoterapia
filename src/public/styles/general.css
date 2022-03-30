@@ -12585,11 +12585,12 @@ ol :hover {
   flex-direction: column;
 }
 .turn-available-title {
+  font-size: 0.8rem;
   color: white;
   background-color: var(--color-enabled-border);
   position: absolute;
-  right: 0.5rem;
-  width: 5.7rem;
+  right: 0.48rem;
+  width: 5.6rem;
   max-width: 5.8rem;
   padding: 0.2rem;
   border-top-left-radius: 0.5rem;

@@ -27,7 +27,7 @@ const completeCalendar = (daysOfMonth, year, month)=>{
     }else{
       firstDayMove = currentDate.getDay()
     };
-    
+
   $firstDay.style.gridColumnStart = `${firstDayMove}`;
 
 }
@@ -45,7 +45,7 @@ export const getDays = (e)=>{
 
     $year.textContent = year;
     $month.setAttribute('data-day', `${month}`)
-    
+
     switch (month) {
       case 0:
         $month.textContent = 'Enero'
@@ -86,7 +86,7 @@ export const getDays = (e)=>{
     }
 
     completeCalendar(daysOfMonth, Number($year.textContent), month)
-    
+
 
   }
 }
@@ -147,7 +147,7 @@ export const changeYear = (e)=>{
 
   let $year = d.querySelector(".year"),
     currentYear = Number($year.textContent);
-  
+
   if(e.target.matches('#ctrl-year-left') && currentYear > 0){
     currentYear -= 1
   }else if(e.target.matches('#ctrl-year-right')){
@@ -167,7 +167,7 @@ export const newMonth = (e)=>{
     daysOfMonth = new Date($year, $month+1, 0).getDate();
 
   completeCalendar(daysOfMonth, $year, $month)
-  
+
 
 }
 
@@ -191,7 +191,7 @@ export const openDay = (e)=>{
 
     newDaySelected.setAttribute('id','day-selected');
     newDaySelected.setAttribute('class','day-selected');
-    newDaySelected.innerHTML = 
+    newDaySelected.innerHTML =
       ` <li class="day-selected-header">
           <h2 class="day-selected-title" data-day='${day}'>${day}/${month}/${year}</h2>
           <a href="#hour-selected"><img class="day-selected-edit" src=".././img/ico/btnEdit.svg"/></a>
@@ -228,7 +228,7 @@ export const openDay = (e)=>{
   }else{
     d.querySelector('main').insertAdjacentElement('beforeend', newDaySelected)
   }
-  
+
 }
 
 export const editDay = (e)=>{
@@ -237,7 +237,7 @@ export const editDay = (e)=>{
 
   $newHourSelected.setAttribute('id','hour-selected');
   $newHourSelected.setAttribute('class','hour-selected');
-  $newHourSelected.innerHTML = 
+  $newHourSelected.innerHTML =
   ` <label>Cuantos turnos desea agregar?
       <input type="number" id="quantityOfTurns" />
     </label>
@@ -257,8 +257,8 @@ export const addTurn = (e)=>{
     $fragment = d.createDocumentFragment();
 
   $newTurn.setAttribute('class','hour-selected-setHourContainer');
-  $newTurn.innerHTML = 
-  `      
+  $newTurn.innerHTML =
+  `
   <label>Desde:<input class="desde-input" type="time"/></label>
   <label>Hasta:<input class="hasta-input"type="time"/></label>
   <button class="btn btn-sm btn-setHour">Agendar</button>
@@ -283,7 +283,7 @@ export const addTurn = (e)=>{
 }
 
 export const setHour = async (e)=>{
-  
+
   let btnNumber = e.target.getAttribute('data-btnSetHour'),
     hourFrom = d.querySelector(`[data-from-${btnNumber}]`),
     hourTo = d.querySelector(`[data-to-${btnNumber}]`),
@@ -297,15 +297,15 @@ export const setHour = async (e)=>{
 
     $replaceSpinner.setAttribute('class','hour-selected-setHourContainer');
     $replaceSpinner.setAttribute('data-containerHour',`${btnNumber}`);
-    $replaceSpinner.innerHTML = 
-    `      
+    $replaceSpinner.innerHTML =
+    `
     <label>Desde:<input class="desde-input" type="time" data-from-${btnNumber}/></label>
     <label>Hasta:<input class="hasta-input"type="time" data-to-${btnNumber}/></label>
     <button class="btn btn-sm btn-setHour" data-btnSetHour="${btnNumber}" >Agendar</button>
     `
 
     $replaceSaved.classList.add('container-succes')
-    $replaceSaved.innerHTML = 
+    $replaceSaved.innerHTML =
     `
       <div class="container-succes-circle">
         <div class="container-succes-circle-check"></div>
@@ -337,19 +337,19 @@ export const setHour = async (e)=>{
         headers: {'Content-Type': 'application/json'}
       });
     const json = await res.json()
-    
+
     console.log(json)
     setTimeout(() => {
 
       if (json.completed === 'saved'){
 
         d.querySelector(`[data-spinner='${btnNumber}']`).replaceWith($replaceSaved)
-        
+
       }else if(json){
 
         d.querySelector(`[data-spinner='${btnNumber}']`).replaceWith($replaceSpinner)
-      } 
-    
+      }
+
       let $alertIncorrect = d.createElement('p'),
       $contentAlert;
 
@@ -363,7 +363,7 @@ export const setHour = async (e)=>{
         case 'turn is busy':
           $contentAlert = 'El horario esta ocupado por otro turno'
           break;
-      } 
+      }
       $alertIncorrect.setAttribute('class','alert alert-danger alert-hour');
       $alertIncorrect.setAttribute('data-alert', btnNumber);
       $alertIncorrect.textContent = `${$contentAlert}`;
@@ -405,13 +405,13 @@ export const importDay = async (e)=>{
       target = e.target,
       hoursArray = [],
       $hours = d.querySelectorAll('.day-selected-hour');
-      
+
     if (target.matches('.day-text')){
 
       daySelected.day = target.textContent
 
     }else if(target.matches('.day')){
-      
+
       daySelected.day = target.children[0].textContent
 
     }else if(target.matches('.day-link')){
@@ -440,7 +440,7 @@ export const importDay = async (e)=>{
         dateFrom = new Date(el.dateFrom).getTime(),
         dateTo = new Date(el.dateTo).getTime(),
         dateDif = ((dateTo-dateFrom)/1000)/60;
-      
+
       if (hoursFrom < 10) hoursFrom = `0${hoursFrom}`;
       if (minutesFrom < 10) minutesFrom = `0${minutesFrom}`;
       if (hoursTo < 10) hoursTo = `0${hoursTo}`;
@@ -448,13 +448,13 @@ export const importDay = async (e)=>{
 
       $hours.forEach(el =>{
 
-        if (el.textContent.slice(0,-3) == hoursFrom) el.insertAdjacentHTML('beforeend', 
+        if (el.textContent.slice(0,-3) == hoursFrom) el.insertAdjacentHTML('beforeend',
           `
           <div class="turn-available-container">
-            <p class="turn-available-title">TURNO</p>
-            <div class="turn-available" style="height:${dateDif*48/60}px; top:${parseInt(minutesFrom)*48/60}px">
-              <p>De: ${hoursFrom}:${minutesFrom}hs</p>
-              <p>A: ${hoursTo}:${minutesTo}hs</p>
+            <p class="turn-available-title" data-id="${hoursFrom+''+hoursTo}">DISPONIBLE</p>
+            <div class="turn-available" data-id="${hoursFrom+''+hoursTo}" style="height:${dateDif*48/60}px; top:${parseInt(minutesFrom)*48/60}px">
+              <p data-id="${hoursFrom+''+hoursTo}">De: ${hoursFrom}:${minutesFrom}hs</p>
+              <p data-id="${hoursFrom+''+hoursTo}">A: ${hoursTo}:${minutesTo}hs</p>
             </div>
           </div>`
         )
@@ -467,6 +467,12 @@ export const importDay = async (e)=>{
 }
 
 export const showStylesHover = (e)=>{
-  console.log(e)
-  e.target.previousElementSibling.classList.toggle('turn-available-title_showHide')
+  let elementId = e.target.getAttribute('data-id');
+
+  
+
+  if (e.type === 'mouseover') d.querySelector(`[data-id="${elementId}"]`).classList.add('turn-available-title_showHide')
+  if (e.type === 'mouseout') d.querySelector(`[data-id="${elementId}"]`).classList.remove('turn-available-title_showHide')
+  // if (e.type === 'mouseover') e.target.previousElementSibling.classList.add('turn-available-title_showHide')
+  // if (e.type === 'mouseout') e.target.previousElementSibling.classList.remove('turn-available-title_showHide')
 }

@@ -69,5 +69,13 @@ d.addEventListener('DOMContentLoaded', (e)=> {
 })
 
 d.addEventListener('mouseover', (e)=>{
-  if (e.target.matches('.turn-available')) showStylesHover(e);
+  if (e.target.matches('.turn-available') || e.target.matches('.turn-available p') ) showStylesHover(e);
 })
+
+d.addEventListener('mouseout', (e)=>{
+  if (e.target.matches('.turn-available') || e.target.matches('.turn-available p') ) showStylesHover(e);
+})
+
+// d.addEventListener('mouseleave', (e)=>{
+//   if (e.target.matches('.turn-available')) showStylesHover(e);
+// })
