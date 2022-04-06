@@ -396,29 +396,8 @@ export const setHour = async (e)=>{
 export const importDay = async (e)=>{
   try {
 
-    let year = d.querySelector('.year').textContent,
-      month = (parseInt(d.querySelector('#currentMonth').getAttribute('data-day')) + 1).toString(),
-      daySelected = {
-        year,
-        month
-      },
-      target = e.target,
-      hoursArray = [],
-      $hours = d.querySelectorAll('.day-selected-hour');
-
-    if (target.matches('.day-text')){
-
-      daySelected.day = target.textContent
-
-    }else if(target.matches('.day')){
-
-      daySelected.day = target.children[0].textContent
-
-    }else if(target.matches('.day-link')){
-
-      daySelected.day = target.children[0].children[0].textContent
-    }
-
+    let $hours = d.querySelectorAll('.day-selected-hour'),
+      daySelected = dayToSend(e)
 
     const res = await fetch(`/importDay`,
     {
@@ -450,9 +429,9 @@ export const importDay = async (e)=>{
 
         if (el.textContent.slice(0,-3) == hoursFrom) el.insertAdjacentHTML('beforeend',
           `
-          <div class="turn-available-container">
+          <div class="turn-available-container" style="height:${dateDif*48/60}px; top:${parseInt(minutesFrom)*48/60}px;">
             <p class="turn-available-title" data-id="${hoursFrom+''+hoursTo}">DISPONIBLE</p>
-            <div class="turn-available" data-id="${hoursFrom+''+hoursTo}" style="height:${dateDif*48/60}px; top:${parseInt(minutesFrom)*48/60}px">
+            <div class="turn-available" data-id="${hoursFrom+''+hoursTo}">
               <p data-id="${hoursFrom+''+hoursTo}">De: ${hoursFrom}:${minutesFrom}hs</p>
               <p data-id="${hoursFrom+''+hoursTo}">A: ${hoursTo}:${minutesTo}hs</p>
             </div>
@@ -475,4 +454,33 @@ export const showStylesHover = (e)=>{
   if (e.type === 'mouseout') d.querySelector(`[data-id="${elementId}"]`).classList.remove('turn-available-title_showHide')
   // if (e.type === 'mouseover') e.target.previousElementSibling.classList.add('turn-available-title_showHide')
   // if (e.type === 'mouseout') e.target.previousElementSibling.classList.remove('turn-available-title_showHide')
+}
+
+const dayToSend = (e)=>{
+  let year = d.querySelector('.year').textContent,
+    month = (Number(d.querySelector('#currentMonth').getAttribute('data-day')) + 1).toString(),
+    daySelected = {
+        year,
+        month
+      },
+    target = e.target;
+
+  if (target.matches('.day-text')){
+
+    daySelected.day = target.textContent
+
+  }else if (target.matches('.day')){
+
+    daySelected.day = target.children[0].textContent
+
+  }else if (target.matches('.day-link')){
+
+    daySelected.day = target.children[0].children[0].textContent
+  }else if (target.matches('.btn-setHour')){
+    daySelected.day = document.querySelector('.day-selected-title').getAttribute('data-day');
+  }
+
+  console.log(daySelected)
+
+  return daySelected
 }

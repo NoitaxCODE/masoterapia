@@ -260,6 +260,8 @@ function isAuthenticated(req, res, next) {
 
 router.post("/day",  async (req, res, next) => {
 
+  console.log(req.body)
+
   let validationFail = await validateTurn(req),
     response;
 

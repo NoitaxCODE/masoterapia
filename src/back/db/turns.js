@@ -33,7 +33,7 @@ const validateTurn = async (req)=>{
         let timeFromDB = el.dateFrom.getTime(),
           timeToDB = el.dateTo.getTime();
         
-      if (timeFrom>timeFromDB && timeFrom<timeToDB || timeTo>timeFromDB && timeTo<timeToDB) turnBusy = true;
+        if (timeFrom>=timeFromDB && timeFrom<=timeToDB || timeTo>=timeFromDB && timeTo<=timeToDB) turnBusy = true;
           
       });
 
