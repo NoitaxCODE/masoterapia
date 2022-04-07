@@ -5,7 +5,7 @@ import { ocultarGenero } from "./views.js";
 import {rePass} from "./registro.js"
 import {loader} from "./loader.js"
 import {cargarPacientes, arrow, expandir, edit, saveAdmin, deleteUser, updateCode, getCode} from "./admin.js"
-import { changeMonth, changeYear, openDay, getDays, newMonth, editDay, addTurn, setHour, importDay, showStylesHover} from "./calendar.js";
+import { changeMonth, changeYear, openDay, getDays, newMonth, editDay, addTurn, setHour, importDay, showStylesHover, refreshDay, disableButtons} from "./calendar.js";
 
 
 d.addEventListener('click', (e)=>{
@@ -51,11 +51,13 @@ d.addEventListener('click', (e)=>{
 
   if (e.target.matches('.day-selected-edit')) editDay(e);
 
-  if (e.target.matches('.btn-turn')) addTurn(e);
-
+  if (e.target.matches('.btn-turn')) {
+    addTurn(e);
+    disableButtons();
+  }
   if (e.target.matches('.btn-setHour')) {
-    loader(e);
-    setHour(e);
+      loader(e);
+      setHour(e);   
   }
 })
 

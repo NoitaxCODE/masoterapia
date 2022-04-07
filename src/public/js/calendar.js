@@ -1,6 +1,8 @@
 const d = document,
   w = window;
 
+let lastContainer
+
 const completeCalendar = (daysOfMonth, year, month)=>{
 
   let $dayList = d.querySelector('#dayList'),
@@ -280,6 +282,9 @@ export const addTurn = (e)=>{
     behavior: 'smooth'
 
   })
+
+  lastContainer = d.querySelectorAll('.hour-selected-setHourContainer').length;
+
 }
 
 export const setHour = async (e)=>{
@@ -338,12 +343,15 @@ export const setHour = async (e)=>{
       });
     const json = await res.json()
 
-    console.log(json)
     setTimeout(() => {
 
       if (json.completed === 'saved'){
 
         d.querySelector(`[data-spinner='${btnNumber}']`).replaceWith($replaceSaved)
+
+        refreshDay(btnNumber)
+
+        d.querySelector(`[data-btnsethour='${parseInt(btnNumber)+1}']`).disabled = false
 
       }else if(json){
 
@@ -446,14 +454,12 @@ export const importDay = async (e)=>{
 }
 
 export const showStylesHover = (e)=>{
-  let elementId = e.target.getAttribute('data-id');
 
-  
+  let elementId = e.target.getAttribute('data-id');
 
   if (e.type === 'mouseover') d.querySelector(`[data-id="${elementId}"]`).classList.add('turn-available-title_showHide')
   if (e.type === 'mouseout') d.querySelector(`[data-id="${elementId}"]`).classList.remove('turn-available-title_showHide')
-  // if (e.type === 'mouseover') e.target.previousElementSibling.classList.add('turn-available-title_showHide')
-  // if (e.type === 'mouseout') e.target.previousElementSibling.classList.remove('turn-available-title_showHide')
+
 }
 
 const dayToSend = (e)=>{
@@ -480,7 +486,18 @@ const dayToSend = (e)=>{
     daySelected.day = document.querySelector('.day-selected-title').getAttribute('data-day');
   }
 
-  console.log(daySelected)
-
   return daySelected
+}
+
+export const refreshDay = (btnNumber)=> {if (btnNumber == lastContainer ) w.location.assign('/calendar');};
+
+export const disableButtons = ()=>{
+
+  let buttons = d.querySelectorAll('.btn-setHour')
+  console.log(buttons)
+  buttons.forEach((button, index) =>{
+    if (index !== 0) button.disabled = true
+    console.log(index)
+  })
+
 }
