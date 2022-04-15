@@ -173,6 +173,20 @@ export const newMonth = (e)=>{
 
 }
 
+export const efectChangeMonth = (e)=>{
+
+  let $dayList = d.querySelector('#dayList')
+
+  $dayList.classList.add('day-position-initial')
+  $dayList.classList.add('day-position')
+  setTimeout(() => {
+    $dayList.classList.remove('day-position')
+    $dayList.classList.remove('day-position-initial')
+  }, 200);
+
+
+}
+
 export const openDay = (e)=>{
   let day,
     month = Number(d.querySelector('#currentMonth').getAttribute('data-day')) +1,
@@ -494,7 +508,7 @@ export const refreshDay = (btnNumber)=> {if (btnNumber == lastContainer ) w.loca
 export const disableButtons = ()=>{
 
   let buttons = d.querySelectorAll('.btn-setHour')
-  console.log(buttons)
+
   buttons.forEach((button, index) =>{
     if (index !== 0) button.disabled = true
     console.log(index)

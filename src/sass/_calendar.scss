@@ -75,6 +75,8 @@ ol{
       color: var(--color-disabled-hover);
       border-color: var(--color-disabled-hover);
     }
+    transform: translateX(0);
+    transition: transform .2s;
 }
 
 .day{
@@ -125,6 +127,12 @@ ol{
       text-align: center;
       font-size : .9rem;
       position  : relative;
+    }
+  }
+  &-position{
+    transform: translateX(120%);
+    &-initial{
+      visibility: hidden;
     }
   }
 }

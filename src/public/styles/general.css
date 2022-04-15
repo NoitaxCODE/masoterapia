@@ -12394,6 +12394,8 @@ ol {
   justify-items: center;
   align-items: center;
   grid-row-gap: 2rem;
+  transform: translateX(0);
+  transition: transform 0.2s;
 }
 ol :hover {
   cursor: pointer;
@@ -12451,6 +12453,12 @@ ol :hover {
   text-align: center;
   font-size: 0.9rem;
   position: relative;
+}
+.day-position {
+  transform: translateX(120%);
+}
+.day-position-initial {
+  visibility: hidden;
 }
 
 .hour-selected {
