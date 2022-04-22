@@ -43,7 +43,10 @@ d.addEventListener('click', (e)=>{
     newMonth(e);
     efectChangeMonth(e);
   } 
-  if (e.target.matches('#ctrl-year-left') || e.target.matches('#ctrl-year-right')) changeYear(e);
+  if (e.target.matches('#ctrl-year-left') || e.target.matches('#ctrl-year-right')){
+    changeYear(e);
+    efectChangeMonth(e);
+  }
 
   if (e.target.matches('.day') || e.target.matches('.day-text') || e.target.matches('.day-link')) {
     openDay(e);

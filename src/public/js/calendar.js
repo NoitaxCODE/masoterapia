@@ -95,7 +95,9 @@ export const getDays = (e)=>{
 
 export const changeMonth = (e)=>{
   let $month = d.querySelector('#currentMonth'),
-    currentMonth = Number($month.getAttribute('data-day'));
+    currentMonth = Number($month.getAttribute('data-day')),
+    $ctrolYearLeft = d.querySelector('#ctrl-year-left'),
+    $ctrolYearRight = d.querySelector('#ctrl-year-right');
 
     if(e.target.matches('#ctrl-calendar-left') && currentMonth >= 1){
       currentMonth -= 1
@@ -103,6 +105,14 @@ export const changeMonth = (e)=>{
     }else if(e.target.matches('#ctrl-calendar-right') && currentMonth <= 10){
       currentMonth += 1
       $month.setAttribute('data-day',`${currentMonth}`)
+    }else if(e.target.matches('#ctrl-calendar-left') && currentMonth === 0){
+      currentMonth = 11
+      $month.setAttribute('data-day',`${currentMonth}`)
+      $ctrolYearLeft.click()
+    }else if(e.target.matches('#ctrl-calendar-right') && currentMonth === 11){
+      currentMonth = 0
+      $month.setAttribute('data-day',`${currentMonth}`)
+      $ctrolYearRight.click()
     }
 
   switch (currentMonth) {
@@ -175,16 +185,43 @@ export const newMonth = (e)=>{
 
 export const efectChangeMonth = (e)=>{
 
-  let $dayList = d.querySelector('#dayList')
+  let $dayList = d.querySelector('#dayList'),
+    $currentMonth = d.querySelector('#currentMonth'),
+    $currentYear = d.querySelector('#year');
 
-  $dayList.classList.add('day-position-initial')
-  $dayList.classList.add('day-position')
-  setTimeout(() => {
-    $dayList.classList.remove('day-position')
-    $dayList.classList.remove('day-position-initial')
-  }, 200);
+  if (e.target.matches('#ctrl-calendar-right')) {
 
+    $currentMonth.classList.add('day-position-right-initial','day-position-right')
+    $dayList.classList.add('day-position-right-initial','day-position-right')
 
+    setTimeout(() => {
+      $currentMonth.classList.remove('day-position-right-initial','day-position-right')
+      $dayList.classList.remove('day-position-right-initial','day-position-right')
+    }, 200);
+
+  }else if(e.target.matches('#ctrl-calendar-left')){
+    $currentMonth.classList.add('day-position-left-initial','day-position-left')
+    $dayList.classList.add('day-position-left-initial','day-position-left')
+
+    setTimeout(() => {
+      $currentMonth.classList.remove('day-position-left-initial','day-position-left')
+      $dayList.classList.remove('day-position-left-initial','day-position-left')
+    }, 200);
+  }else if (e.target.matches('#ctrl-year-right')){
+
+    $currentYear.classList.add('day-position-right-initial','day-position-right')
+    setTimeout(() => {
+      $currentYear.classList.remove('day-position-right-initial','day-position-right')
+    }, 200);
+
+  }else if (e.target.matches('#ctrl-year-left')){
+
+    $currentYear.classList.add('day-position-left-initial','day-position-left')
+    
+    setTimeout(() => {
+      $currentYear.classList.remove('day-position-left-initial','day-position-left')
+    }, 200);
+  };
 }
 
 export const openDay = (e)=>{

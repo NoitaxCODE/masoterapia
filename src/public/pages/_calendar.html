@@ -17,7 +17,7 @@
       <div class="bg-calendar">
         <div class="header-year">
           <div class="header-calendar-ctrl-btn" id="ctrl-year-left"></div>
-          <h2 class="year"></h2>
+          <h2 class="year" id="year"></h2>
           <div class="header-calendar-ctrl-btn" id="ctrl-year-right"></div>
         </div>
         <div class="header-calendar">
@@ -25,7 +25,7 @@
           <h2 id="currentMonth"> </h2>
           <div class="header-calendar-ctrl-btn" id="ctrl-calendar-right"> </div>
         </div>
-        <ol id="dayList">
+        <ol class="header-days">
           <li class="day-week">Lu</li>
           <li class="day-week">Ma</li>
           <li class="day-week">Mi</li>
@@ -34,6 +34,7 @@
           <li class="day-week">Sa</li>
           <li class="day-week">Do</li>
         </ol>
+        <ol id="dayList"></ol>
       </div>
     </main>
     <script src="./js/general.js" type="module"></script>

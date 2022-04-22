@@ -12349,6 +12349,8 @@ td.inputEdit {
   margin: 0.5rem 0;
   text-align: center;
   font-size: 1.8rem;
+  transform: translateX(0);
+  transition: transform 0.2s;
 }
 
 .subtitle-calendar {
@@ -12385,6 +12387,15 @@ td.inputEdit {
   transform: rotate(45deg);
 }
 
+.header-days {
+  margin-bottom: 1.5rem;
+}
+
+#currentMonth {
+  transform: translateX(0);
+  transition: transform 0.2s;
+}
+
 ol {
   width: 100%;
   padding-left: 0;
@@ -12393,7 +12404,7 @@ ol {
   grid-template-columns: repeat(7, 1fr);
   justify-items: center;
   align-items: center;
-  grid-row-gap: 2rem;
+  grid-row-gap: 1.6rem;
   transform: translateX(0);
   transition: transform 0.2s;
 }
@@ -12454,10 +12465,16 @@ ol :hover {
   font-size: 0.9rem;
   position: relative;
 }
-.day-position {
+.day-position-right {
   transform: translateX(120%);
 }
-.day-position-initial {
+.day-position-right-initial {
+  visibility: hidden;
+}
+.day-position-left {
+  transform: translateX(-120%);
+}
+.day-position-left-initial {
   visibility: hidden;
 }
 

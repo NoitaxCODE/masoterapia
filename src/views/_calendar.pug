@@ -5,13 +5,13 @@ append main
   .bg-calendar
     .header-year
       #ctrl-year-left.header-calendar-ctrl-btn
-      h2.year
+      h2#year.year
       #ctrl-year-right.header-calendar-ctrl-btn
     .header-calendar
       #ctrl-calendar-left.header-calendar-ctrl-btn
       h2#currentMonth 
       #ctrl-calendar-right.header-calendar-ctrl-btn 
-    ol#dayList
+    ol.header-days
       li.day-week Lu
       li.day-week Ma
       li.day-week Mi
@@ -19,3 +19,4 @@ append main
       li.day-week Vi
       li.day-week Sa
       li.day-week Do
+    ol#dayList
