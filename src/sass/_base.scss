@@ -1,25 +1,28 @@
 :root{
-  --bg-color: #E0E9F6;
+  --bg-color: #F6F7FC;
   --bg-color-alt: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  --bg-color-hero: hsla(0, 0%, 100%, 0.75);
+  --bg-color-items: hsla(0, 0%, 100%, 0.60);
   --small: 280px;
   --middle: 706px;
   --large: 1200px;
+  --shadowStandart: 0px 0px 12px rgba(37, 40, 90, 0.3);
 }
 
 body{
-  background-image: var(--bg-color-alt);
+  background-color: var(--bg-color);
   min-height: 100vh;
   display: grid;
   padding: .5rem;
   margin-bottom: .5rem;
   font-family: 'open sans';
-
 }
 
 main{
   border-radius: 1rem;
-  background-color: #ffffff;
-  box-shadow: 0 0 4px black;
+  background: linear-gradient(var(--bg-color-hero), var(--bg-color-hero)) , url('../img/bg/3156493.jpg') -20px 0 / cover;
+  box-shadow: 0px 17px 29px rgba(0, 0, 0, 0.07);
+  position: relative;
 }
 
 .bg-container{
