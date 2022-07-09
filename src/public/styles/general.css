@@ -12017,6 +12017,10 @@ td {
 
   .fila:first-child {
     grid-column: 1/span 3;
+    max-width: 100%;
+  }
+  .fila:first-child h2 {
+    margin-left: 1rem;
   }
 
   .fila:last-child {

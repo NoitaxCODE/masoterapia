@@ -224,6 +224,10 @@ td {
   }
   .fila:first-child {
     grid-column: 1 / span 3;
+    max-width: 100%;
+    & h2{
+      margin-left: 1rem;
+    }
   }
   .fila:last-child {
     grid-row: 2 / 4;
