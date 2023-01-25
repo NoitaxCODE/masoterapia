@@ -442,3 +442,5 @@ export const getCode = async ()=> {
     currentCode.textContent = `El codigo actual es ${code.codigo}`
   }
 }
+
+console.log('Probando')
