@@ -443,4 +443,4 @@ export const getCode = async ()=> {
   }
 }
 
-console.log('Probando')
+console.log('Probando2')
