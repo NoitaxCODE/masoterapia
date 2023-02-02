@@ -1,6 +1,5 @@
 .bg-admin{
   display: grid;
-  // grid-template-columns: 1fr;
   justify-items: center;
   margin: 1rem;
   min-width: 272px;
@@ -9,10 +8,10 @@
 .listDetails{
   width: 100%;
   min-width: 280px;
-  box-shadow: 0 0 5px black;
-  border-radius: 4px;
+  box-shadow: var(--shadowStandart);
+  border-radius: 12px;
   box-sizing: border-box;
-  // overflow: scroll;
+  background-color: var(--bg-color-items);
   & table, & .subtitle{
     padding: 0 .3rem;
   }
@@ -27,6 +26,17 @@
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 2rem;
+}
+
+.headerSubtitle{
+  text-decoration: underline;
+  position: relative;
+  &::after{
+    content: ':';
+    position: absolute; 
+    right: -7.5%;
+    bottom: -1px;
+  }
 }
 
 #container-pacientes{
@@ -60,8 +70,7 @@ summary{
   width: 20px;
   height: 20px;
   position: relative;
-  top: -5px;
-  clip-path: polygon(50% 100%, 90% 50%, 10% 50%);
+  clip-path: polygon(50% 66%, 20% 33%, 80% 33%);
   transition: transform .3s;
   &-down{
     transform: rotate(90deg);
@@ -83,7 +92,7 @@ summary{
 }
 
 td.inputEdit{
-  background-color: hsl(97, 95%, 95%);
+  background-color: hsl(97, 95%, 85%);
 
 }
 
@@ -99,7 +108,6 @@ td.inputEdit{
   background-color: hsl(0, 100%, 89%);
   padding: .2rem;
   width: 5rem;
-  box-shadow: 0 0 2px rgb(49, 49, 49);
   border-radius: .5rem;
   cursor: pointer;
 
@@ -115,9 +123,9 @@ td.inputEdit{
   }
 }
 .btn_update{
-  background-color: hsl(123, 64%, 89%);
+  background-color: hsla(123, 64%, 89%, 0.6);
   &:hover{
-    box-shadow: 0 0 5px black;
+    box-shadow: var(--shadowStandart);
   }
 }
 .refresh{
@@ -136,8 +144,9 @@ td.inputEdit{
   align-items: center;
   flex-direction: column;
   padding: 2rem;
-  box-shadow: 0 0 5px black;
+  box-shadow: var(--shadowStandart);
   border-radius: 5%;
+  background-color: var(--bg-color-items);
   & h2{
     margin: 0 0 1rem;
   }

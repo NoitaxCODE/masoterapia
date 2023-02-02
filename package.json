@@ -1,11 +1,11 @@
 {
   "name": "masoterapia",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node ./src/back/index.js",
-    "dev": "nodemon ./src/back/index.js"
+    "dev": "nodemon ./src/back/index.js",
+    "build": "none"
   },
   "author": "",
   "license": "ISC",
@@ -30,5 +30,6 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "pug": "^3.0.2"
-  }
+  },
+  "description": ""
 }
