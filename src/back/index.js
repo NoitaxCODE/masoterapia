@@ -48,3 +48,5 @@ app.use(express.json());
 
 //Routes
 app.use('/', require('./routes/index-routes'))
+
+console.log("Probando redeploy")
